@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Menú principal {% endblock %}
+
+{% block css %}
+<!-- <link rel="stylesheet"
+type="text/css"
+href="{{ url_for('static', filename='css/')}}"> -->
+{% endblock %}
+
+{% block content %}
+<div>
+    <form>
+        <div>
+            <h1> ESTADOBUXEF </h1>
+            {% if usuario %}
+                <a> usuario </a>
+            {% else %}
+                <button type="button" id="login">
+                    Login
+                </button>
+            {% endif %}
+        </div>
+        <div>
+            <div>
+
+            </div>
+            <div>
+                
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
