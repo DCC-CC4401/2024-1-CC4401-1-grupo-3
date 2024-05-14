@@ -3,27 +3,14 @@
 {% block title %} Menú principal {% endblock %}
 
 {% block css %}
-<!-- <link rel="stylesheet"
-type="text/css"
-href="{{ url_for('static', filename='css/'home.css)}}"> -->
 {% endblock %}
 
 {% block content %}
 <div>
     <form>
         <div>
-            <h1> ESTADOBUXEF </h1>
-            {% if usuario %}
-                <a> usuario </a>
-            {% else %}
-                <button type="button" id="login">
-                    Login
-                </button>
-            {% endif %}
-        </div>
-        <div>
             <div>
-                <h2>Últimos reportes</h2>
+                <h2>Últimos Reportes</h2>
                 <tr>
                     <th>Hora</th>
                     <th>Lugar</th>
@@ -40,7 +27,7 @@ href="{{ url_for('static', filename='css/'home.css)}}"> -->
                 {% endif %}
             </div>
             <div>
-                <h2>Ingresar reporte</h2>
+                <h2>Ingresar Reporte</h2>
                 {% if usuario %}
                     <div id="lugar">
                         <label>Lugar: </label>
@@ -53,10 +40,8 @@ href="{{ url_for('static', filename='css/'home.css)}}"> -->
                         <textarea></textarea>
                     </div>
                 {% else %}
-                    <h3>Para publicar reportes debe ingresar con su cuenta</h3>
-                    <button type="button">Ingresar</button>
-                    <h3>Si no posee una cuenta, debe registrarse</h3>
-                    <button type="button">Registrarse</button>
+                    <h3>Para publicar reportes debe registrarse</h3>
+                    <a href="{% url 'register' %}">Registrarse</a>
                 {% endif %}
             </div>
         </div>

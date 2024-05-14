@@ -12,10 +12,19 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
     />
   </head>
   <body>
+    <div class="navbar">
+      <h1> ESTADOBUXEF </h1>
+            {% if usuario %}
+                <a> usuario </a>
+            {% else %}
+                <button type="button" id="login">
+                    Login
+                </button>
+            {% endif %}
+    </div>
     {% block content %}{% endblock %}
   </body>
 </html>
