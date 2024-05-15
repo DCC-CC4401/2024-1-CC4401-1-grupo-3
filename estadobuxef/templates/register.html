@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block title %} Registrate {% endblock %} 
+{% block css%}
+  {% endblock %} 
+  {% block content %}
+  <div class="container">
+      <p id="bajada">Regístrate para mandar tu reporte</p>
+    <form method="post">
+      <div id="mail-input" class="grupo-input">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div id="username-input" class="grupo-input">
+        <label for="username">Nombre de usuario</label>
+        <input id="username" name="username" type="text" minlength="4" required />
+      </div>
+      <div id="contrasenna-input" class="grupo-input">
+        <label for="contrasenna">Contraseña</label>
+        <input id="contrasenna" name="contrasenna" type="password" required />
+      </div>
+      <div class="botones">
+        <button type="submit" id="envio">Registrarse</button>
+      </div>
+    </form>
+    <div class="footer-form">
+      ¿Ya tienes una cuenta? <a href="{% url 'login' %}">Ingresa</a>
+    </div>
+  </div>
+  {% endblock %}
