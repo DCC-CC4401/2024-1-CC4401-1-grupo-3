@@ -24,6 +24,7 @@
                     </tr>
                 {% endfor %}
             {% endif %}
+            <a href="{% url 'reportes' %}">Ver más</a>
         </div>
         <div>
             <h2>Ingresar Reporte</h2>
@@ -45,7 +46,7 @@
             </form>
             {% else %}
                 <h3>Para publicar reportes debe registrarse</h3>
-                <a href="{% url 'register' %}">Registrarse</a>
+                <a href="{% url 'log-reg' %}">Registrarse</a>
             {% endif %}
         </div>
     </div>

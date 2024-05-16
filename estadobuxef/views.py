@@ -5,8 +5,8 @@ from django.shortcuts import render
 def home(request):
     return render(request, "home.html")
 
-def login(request):
-    return render(request, "login.html")
+def log_reg(request):
+    return render(request, "log-reg.html")
 
-def register(request):
-    return render(request, "register.html")
+def report(request):
+    return render(request, "reports.html")
