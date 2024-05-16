@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block title %} Menú principal {% endblock %}
 
 {% block css %}
@@ -18,9 +17,9 @@
             {% if data %}
                 {% for reporte in data %}
                 <tr>
-                        <td>{{reporte.hora}}</td>   
-                        <td>{{reporte.lugar}}</td>  
-                        <td>{{reporte.suceso}}</td>  
+                        <td>{reporte[0]}</td>   
+                        <td>{reporte[1]}</td>  
+                        <td>{reporte[2]}</td>  
                     </tr>
                 {% endfor %}
             {% endif %}
@@ -29,6 +28,7 @@
             <h2>Ingresar Reporte</h2>
 {#            {% if usuario %}#}
             <form method="post">
+            {% csrf_token %}
                 <div id="lugar">
                     <label>Lugar: </label>
                     <select id="lugares">
