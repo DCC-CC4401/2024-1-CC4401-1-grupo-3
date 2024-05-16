@@ -8,5 +8,5 @@ def home(request):
 def log_reg(request):
     return render(request, "log-reg.html")
 
-def report(request):
+def reports(request):
     return render(request, "reports.html")
