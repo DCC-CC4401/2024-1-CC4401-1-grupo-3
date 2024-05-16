@@ -7,45 +7,48 @@
 
 {% block content %}
 <div>
-    <form>
+    <div>
         <div>
-            <div>
-                <h2>Últimos Reportes</h2>
+            <h2>Últimos Reportes</h2>
+            <tr>
+                <th>Hora</th>
+                <th>Lugar</th>
+                <th>Suceso</th>
+            </tr>
+            {% if data %}
+                {% for reporte in data %}
                 <tr>
-                    <th>Hora</th>
-                    <th>Lugar</th>
-                    <th>Suceso</th>
-                </tr>
-                {% if data %}
-                    {% for reporte in data %}
-                        <tr>
-                            <td>{{reporte.hora}}</td>   
-                            <td>{{reporte.lugar}}</td>  
-                            <td>{{reporte.suceso}}</td>  
-                        </tr>
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <div>
-                <h2>Ingresar Reporte</h2>
-                {% if usuario %}
-                    <div id="lugar">
-                        <label>Lugar: </label>
-                        <select id="lugares">
-                            <option value="null">Seleccione lugar del suceso</option>
-                        </select>
-                    </div>
-                    <div id="suceso">
-                        <label>Suceso:</label>
-                        <textarea></textarea>
-                    </div>
-                {% else %}
-                    <h3>Para publicar reportes debe registrarse</h3>
-                    <a href="{% url 'register' %}">Registrarse</a>
-                {% endif %}
-            </div>
+                        <td>{{reporte.hora}}</td>   
+                        <td>{{reporte.lugar}}</td>  
+                        <td>{{reporte.suceso}}</td>  
+                    </tr>
+                {% endfor %}
+            {% endif %}
         </div>
-    </form>
+        <div>
+            <h2>Ingresar Reporte</h2>
+            {% if usuario %}
+            <form>
+                <div id="lugar">
+                    <label>Lugar: </label>
+                    <select id="lugares">
+                        <option value="null">Seleccione lugar del suceso</option>
+                    </select>
+                </div>
+                <div id="suceso">
+                    <label>Suceso:</label>
+                    <textarea></textarea>
+                </div>
+                <div >
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+            {% else %}
+                <h3>Para publicar reportes debe registrarse</h3>
+                <a href="{% url 'register' %}">Registrarse</a>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 
