@@ -27,12 +27,15 @@
         </div>
         <div>
             <h2>Ingresar Reporte</h2>
-            {% if usuario %}
+{#            {% if usuario %}#}
             <form>
                 <div id="lugar">
                     <label>Lugar: </label>
                     <select id="lugares">
                         <option value="null">Seleccione lugar del suceso</option>
+                        {% for lugar in lugares %}
+                            <option value={lugar[1]}>{lugar[0]}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div id="suceso">
@@ -43,10 +46,10 @@
                     <button type="submit">Enviar</button>
                 </div>
             </form>
-            {% else %}
+{#            {% else %}#}
                 <h3>Para publicar reportes debe registrarse</h3>
                 <a href="{% url 'register' %}">Registrarse</a>
-            {% endif %}
+{#            {% endif %}#}
         </div>
     </div>
 </div>
