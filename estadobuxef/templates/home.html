@@ -29,7 +29,8 @@
         <div>
             <h2>Ingresar Reporte</h2>
             {% if usuario %}
-            <form>
+            <form id="report-form" method="POST">
+                {% csrf_token %}
                 <div id="lugar">
                     <label>Lugar: </label>
                     <select id="lugares">
