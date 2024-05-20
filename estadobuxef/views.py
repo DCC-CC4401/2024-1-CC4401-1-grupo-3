@@ -1,17 +1,20 @@
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .models import NuevoReporteForm
+from .models import NuevoReporteForm, Lugar, Reporte
 
 
 # Create your views here.
 def home(request):
     if request.method == "POST":
         form_reporte = NuevoReporteForm(request.POST)
+        print(form_reporte.is_valid())
         if form_reporte.is_valid():
-            reporte = form_reporte.cleaned_data
-            reporte.save()
+            cleaned_data = form_reporte.cleaned_data
+            # Reporte.objects.create(**cleaned_data)
+            form_reporte.save()
+        return HttpResponseRedirect('')
     elif request.method == "GET":
-        return render(request, "home.html", {'lugares': [["F10", "0"]]})
+        return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': Reporte.objects.all()})
 
 
 def login(request):

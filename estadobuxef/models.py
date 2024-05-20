@@ -19,7 +19,7 @@ class Reporte(models.Model):
 
 class Lugar(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT, default='Sin categoria')
-    nombre = models.CharField('Nombre', max_length=50)
+    nombre = models.CharField('Nombre', max_length=50, null=False)
     data = models.JSONField(default=dict)
 
 

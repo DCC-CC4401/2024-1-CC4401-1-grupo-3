@@ -9,20 +9,22 @@
     <div>
         <div>
             <h2>Últimos Reportes</h2>
+            <table>
             <tr>
                 <th>Hora</th>
                 <th>Lugar</th>
                 <th>Suceso</th>
             </tr>
-            {% if data %}
-                {% for reporte in data %}
+            {% if reportes %}
+                {% for reporte in reportes %}
                 <tr>
-                        <td>{reporte[0]}</td>   
-                        <td>{reporte[1]}</td>  
-                        <td>{reporte[2]}</td>  
-                    </tr>
+                    <td>{{ reporte.hora }}</td>
+                    <td>{{ reporte.lugar.nombre }}</td>
+                    <td>{{ reporte.contenido }}</td>
+                </tr>
                 {% endfor %}
             {% endif %}
+            </table>
         </div>
         <div>
             <h2>Ingresar Reporte</h2>
@@ -30,8 +32,8 @@
             <form method="post">
             {% csrf_token %}
                 <div id="lugar">
-                    <label>Lugar: </label>
-                    <select id="lugares">
+                    <label for=lugar">Lugar: </label>
+                    <select id="lugar" name="lugar">
                         <option value="null">Seleccione lugar del suceso</option>
                         {% for lugar in lugares %}
                             <option value={{ lugar.id }}>{{ lugar.nombre }}</option>
@@ -39,8 +41,8 @@
                     </select>
                 </div>
                 <div id="suceso">
-                    <label>Suceso:</label>
-                    <textarea></textarea>
+                    <label for="contenido">Suceso:</label>
+                    <textarea id="contenido" name="contenido"></textarea>
                 </div>
                 <div >
                     <button type="submit">Enviar</button>
