@@ -24,7 +24,7 @@ class Lugar(models.Model):
 
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50, null=False)
 
 
 class NuevoReporteForm(forms.ModelForm):
