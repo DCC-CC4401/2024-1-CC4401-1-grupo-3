@@ -1,6 +1,8 @@
 {% extends 'base.html' %} 
-{% block title %} Registrate {% endblock %} 
+{% load static %}
+{% block title %} Reportes {% endblock %} 
 {% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %} 
 {% block content %}
 <div>
@@ -8,7 +10,7 @@
         <h2>Últimos Reportes</h2>
         {% if data %}
             {% for reporte in data %}
-            <div>
+            <div class="container">
                     {{reporte.hora}}   
                     {{reporte.lugar}}  
                     {{reporte.suceso}}  
@@ -20,7 +22,7 @@
         {% endif %}
     </div>
     <div>
-        <a href="{% url 'home' %}">Volver</a>
+        <a class="button" href="{% url 'home' %}">Volver</a>
     </div>
 </div>
 {% endblock %} 

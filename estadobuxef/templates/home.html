@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Menú principal {% endblock %}
 
 {% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
 
 {% block content %}
 <div>
     <div>
-        <div>
+        <div class="container">
             <h2>Últimos Reportes</h2>
             <table>
             <tr>
@@ -25,6 +27,7 @@
                 {% endfor %}
             {% endif %}
             </table>
+            <a href="{% url 'reports' %}">Ver más</a>
         </div>
         <div>
             <h2>Ingresar Reporte</h2>

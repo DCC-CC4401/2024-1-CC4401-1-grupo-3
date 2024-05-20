@@ -1,11 +1,17 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% block title %} Registrate {% endblock %} 
 {% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sign.css' %}">
   {% endblock %} 
   {% block content %}
   <div class="container">
-    <div>
-      <form id="login-form" method="POST" novalidate>
+    <div class="tab-container">
+      <div class="tab active" data-target="#login-form">Login</div>
+      <div class="tab" data-target="#signup-form">Register</div>
+    </div>
+    <div class="form-container">
+      <form id="login-form" class="active" method="POST" novalidate>
         {% csrf_token %}
         <h2>Ingresa para mandar tu reporte</h2>
         {{form.as_p}}
@@ -21,4 +27,21 @@
       </form>
     </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.tab');
+      const forms = document.querySelectorAll('form');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          tabs.forEach(t => t.classList.remove('active'));
+          forms.forEach(f => f.classList.remove('active'));
+          
+          const target = document.querySelector(this.getAttribute('data-target'));
+          this.classList.add('active');
+          target.classList.add('active');
+        });
+      });
+    });
+  </script>
   {% endblock %}
