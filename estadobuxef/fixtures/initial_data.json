@@ -1,0 +1,108 @@
+[
+  {
+    "model": "estadobuxef.Categoria",
+    "pk": 1,
+    "fields": {
+      "nombre": "Sala"
+    }
+  },
+  {
+    "model": "estadobuxef.Categoria",
+    "pk": 2,
+    "fields": {
+      "nombre": "Baño"
+    }
+  },
+  {
+    "model": "estadobuxef.Categoria",
+    "pk": 3,
+    "fields": {
+      "nombre": "Comedor"
+    }
+  },
+  {
+    "model": "estadobuxef.Lugar",
+    "pk": 1,
+    "fields": {
+      "categoria": 1,
+      "nombre": "Sala F10",
+      "data": {
+        "Enchufes": "4 en malas posiciones",
+        "Asientos": "capacidad para +100 personas, buena acústica y visibilidad en general",
+        "Pizarra": "4 de tiza y 2 de plumon, pizarras con rieles",
+        "Internet": "Buena calidad",
+        "Baños": "Cercanos a la sala, a la vuelta de la esquina"
+      }
+    }
+  },
+  {
+    "model": "estadobuxef.Lugar",
+    "pk": 2,
+    "fields": {
+      "categoria": 1,
+      "nombre": "Sala QP",
+      "data": {
+        "Enchufes": "muchos, aproximadamente 8 a 10 por fila de asientos, buena posición",
+        "Asientos": "capacidad para +80 personas, buena acústica y visiibiliidad, quisas un poco malas si se sienta al fondo",
+        "Pizarra": "4 de tiza con rieles y 2 de plumon detrás, mala visibilidad en toda una mitad si se prende el proyector",
+        "Internet": "Buena calidad",
+        "Baños": "Tiene el baño de las salas Q20-1-2 cerca"
+      }
+    }
+  },
+  {
+    "model": "estadobuxef.Lugar",
+    "pk": 3,
+    "fields": {
+      "categoria": 1,
+      "nombre": "Sala B02",
+      "data": {
+        "Enchufes": "muchos 2-3 por cada 2 asientos, muy buena posición de los enchufes",
+        "Asientos": "capacidad para +100 personas, buena visibilidad y muy buena acústica (perfecta si se cierran las puertas), proyector grande",
+        "Pizarra": "4 de tiza con rieles y 2 de plumon detrás, ningún desperfecto aca",
+        "Internet": "Puede a veces la calidad de la señal no ser la mejor la estar en el -1 y además por lo grande de la sala y posibles interferencias",
+        "Baños": "Relativamente cerca, a unos 2-3 minutos caminando"
+      }
+    }
+  },
+  {
+    "model": "estadobuxef.Lugar",
+    "pk": 4,
+    "fields": {
+      "categoria": 3,
+      "nombre": "Cafetería 850",
+      "data": {
+        "Lugar": "Muchas mesas para comer tanto solo como en compañía",
+        "Condiciones": "Aire acondicionado acorde al clima, TV con musica y noticias, Tienda para comprar cositas para comer y beber",
+        "Microondas": "2, se genera congestion en horarios de almuerzo (13 - 14hr aprox)",
+        "Ambiente": "Agradable, el ruido no es excesivo para estudiar y al mismo tiempo no es silencioso como para no poder hablar"
+      }
+    }
+  },
+  {
+    "model": "estadobuxef.Lugar",
+    "pk": 5,
+    "fields": {
+      "categoria": 2,
+      "nombre": "Baños Hall Sur",
+      "data": {
+        "Espejos": "1 de gran tamaño, pueden verse varias personas a la vez, con buena iluminación, entorpece el paso de la gente que quiere ir a los cubiculos por el angosto pasillo",
+        "Cubículos": "5 todos con pestillo (1 para personas con movilidad reducida), tamaño medio justo, no hay mucho lugar para moverse dentro, poseen confort y basurero dentro, incluso una percha para dejar polerones, bolsos o mochilas",
+        "Utensilios": "Hay papel higiénico dentro y fuera de los cubículos, hay 3 dispensadores de jabón (aun que no siempre estan relleno) y hay una maquina para secarse las manos con aire frio, hay papel para secarse las manos, basurero fuera de los cubículos, 4 lavamanos"
+      }
+    }
+  },
+  {
+    "model": "estadobuxef.Lugar",
+    "pk": 6,
+    "fields": {
+      "categoria": 2,
+      "nombre": "Baños Edificio Norte 851",
+      "data": {
+        "Espejos": "1 de tamaño medio, pueden verse aprox 3 personas a la vez, con buena iluminación, no entorpece el transito del baño",
+        "Cubículos": "2, con puertas y chapas, tamaño mas amplio, poseen confort y basurero, no poseen perchas, hay espacio debajo de la puerta para saber si esta ocupado",
+        "Utensilios": "Hay confort solo dentro de los baños, afuera hay 2 dispensadores de jabón, 2 lavamanos, 1 basurero y papel para secarse las manos"
+      }
+    }
+  }
+]
