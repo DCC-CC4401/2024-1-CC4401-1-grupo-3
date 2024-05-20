@@ -34,7 +34,7 @@
                     <select id="lugares">
                         <option value="null">Seleccione lugar del suceso</option>
                         {% for lugar in lugares %}
-                            <option value={lugar[1]}>{lugar[0]}</option>
+                            <option value={{ lugar.id }}>{{ lugar.nombre }}</option>
                         {% endfor %}
                     </select>
                 </div>
