@@ -27,3 +27,19 @@ Linux/Mac:
 `pip install django`
 
 Now we can start the server with: `python manage.py runserver`
+
+## Loading initial data into the database
+
+Check that `estadobuxef/migrations` is empty. If it's not, delete everything inside it.
+
+Create migrations for the application:
+
+`python manage.py makemigrations`
+
+Now import them:
+
+`python manage.py migrate`
+
+Load the initial data contained as fixtures:
+
+`python manage.py loaddata initial_data`
