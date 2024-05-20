@@ -7,12 +7,12 @@ from .models import NuevoReporteForm, Lugar, Reporte
 def home(request):
     if request.method == "POST":
         form_reporte = NuevoReporteForm(request.POST)
-        print(form_reporte.is_valid())
         if form_reporte.is_valid():
             cleaned_data = form_reporte.cleaned_data
             # Reporte.objects.create(**cleaned_data)
             form_reporte.save()
-        return HttpResponseRedirect('')
+            form_reporte = NuevoReporteForm()
+        return HttpResponseRedirect('/')
     elif request.method == "GET":
         return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': Reporte.objects.all()})
 
