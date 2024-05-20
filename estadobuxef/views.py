@@ -17,9 +17,9 @@ def home(request):
         return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': Reporte.objects.all()})
 
 
-def login(request):
-    return render(request, "login.html")
+def log_reg(request):
+    return render(request, "log-reg.html")
 
+def reports(request):
+    return render(request, "reports.html")
 
-def register(request):
-    return render(request, "register.html")
