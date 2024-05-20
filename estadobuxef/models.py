@@ -5,14 +5,10 @@ from django.db import models
 
 # Create your models here.
 class UsuarioRegistrado(User):
-    def __init__(self, *args, **kwargs):
-        super(UsuarioRegistrado, self).__init__(*args, **kwargs)
-
+    pass
 
 class Estudiante(UsuarioRegistrado):
-    def __init__(self, *args, **kwargs):
-        super(Estudiante, self).__init__(*args, **kwargs)
-
+    pass
 
 class Reporte(models.Model):
     hora = models.DateTimeField(auto_now_add=True)
@@ -20,20 +16,15 @@ class Reporte(models.Model):
     lugar = models.ForeignKey('Lugar', on_delete=models.PROTECT)
     image = models.FileField(upload_to='uploads/estudiante/', blank=True, null=True)
 
-    def __init__(self, *args, **kwargs):
-        super(Reporte, self).__init__(*args, **kwargs)
-
 
 class Lugar(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT, default='Sin categoria')
-    def __init__(self, *args, **kwargs):
-        super(Lugar, self).__init__(*args, **kwargs)
+    nombre = models.CharField('Nombre', max_length=50)
+    data = models.JSONField(default=dict)
 
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=50, null=False, db_default='Sin categoría')
-    def __init__(self, *args, **kwargs):
-        super(Categoria, self).__init__(*args, **kwargs)
+    nombre = models.CharField(max_length=50)
 
 
 class NuevoReporteForm(forms.ModelForm):
