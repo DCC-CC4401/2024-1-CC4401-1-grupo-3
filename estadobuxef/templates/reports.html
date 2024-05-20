@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% block title %} Registrate {% endblock %} 
+{% block css%}
+{% endblock %} 
+{% block content %}
+<div>
+    <div>
+        <h2>Últimos Reportes</h2>
+        {% if data %}
+            {% for reporte in data %}
+            <div>
+                    {{reporte.hora}}   
+                    {{reporte.lugar}}  
+                    {{reporte.suceso}}  
+                    {% if reporte.foto %}
+                    {{reporte.foto}}
+                    {% endif %}
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        <a href="{% url 'home' %}">Volver</a>
+    </div>
+</div>
+{% endblock %} 
