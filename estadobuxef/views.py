@@ -21,5 +21,6 @@ def log_reg(request):
     return render(request, "log-reg.html")
 
 def reports(request):
-    return render(request, "reports.html")
+    if request.method == "GET":
+        return render(request, "reports.html", {'data': Reporte.objects.all()})
 

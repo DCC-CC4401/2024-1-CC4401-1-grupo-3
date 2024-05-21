@@ -65,9 +65,22 @@ body {
   flex-direction: column;
   background-color: #FCB9B2;
   border-radius: .25em;
-  padding: 12px;
-  margin: 3px;
+  padding: 20px;
+  margin: 15px;
+
 }
+
+.time {
+  position: relative;
+  top: 2px;
+  right: 2px;
+}
+
+.container p {
+  text-align: right;
+}
+
+
 
 .button {
   font: 1rem 'Fira Sans', sans-serif;

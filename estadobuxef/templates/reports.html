@@ -11,12 +11,12 @@
         {% if data %}
             {% for reporte in data %}
             <div class="container">
-                    {{reporte.hora}}   
-                    {{reporte.lugar}}  
-                    {{reporte.suceso}}  
-                    {% if reporte.foto %}
-                    {{reporte.foto}}
-                    {% endif %}
+                    <p class="time">{{reporte.hora}}</p>
+                    <h1>{{reporte.contenido}}</h1>
+                    <p class="place">{{reporte.lugar.nombre}}</p>
+                    <!-- {% if reporte.foto %}
+                    <p>{{reporte.foto}}</p>
+                    {% endif %} -->
             </div>
             {% endfor %}
         {% endif %}
