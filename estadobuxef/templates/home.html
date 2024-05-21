@@ -2,6 +2,61 @@
 {% block title %} Menú principal {% endblock %}
 
 {% block css %}
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #e0e0e0;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -50,7 +105,7 @@
             </form>
 {#            {% else %}#}
                 <h3>Para publicar reportes debe registrarse</h3>
-                <a href="{% url 'register' %}">Registrarse</a>
+                <a href="{% url 'log-reg' %}">Registrarse</a>
 {#            {% endif %}#}
         </div>
     </div>
