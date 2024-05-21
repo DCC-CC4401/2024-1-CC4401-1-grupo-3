@@ -16,10 +16,10 @@ body {
 .navbar {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   background: #B23A48;
-  border-radius: .25em;
+  /* border-radius: .25em; */
   position: fixed;
   top: 0;
   left: 0;
@@ -33,14 +33,6 @@ body {
 
 .navbar > * {
   color: var(--black-color);
-}
-
-
-.navbar h1 {
-  font-family: "Fira Sans", sans-serif;
-  margin: .5em;
-  margin-right: auto;
-  font-size: 1.5em;
 }
 
 .navbar a {
