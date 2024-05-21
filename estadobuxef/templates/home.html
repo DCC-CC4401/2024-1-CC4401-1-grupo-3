@@ -25,6 +25,7 @@ th, td {
     text-align: left;
     padding: 8px;
     border-bottom: 1px solid #ddd;
+    color: #000000;
 }
 
 th {
@@ -51,10 +52,43 @@ select, textarea {
 }
 
 button {
+    background-color: #933043;
+    color: #f9ecec;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+button:hover {
+    background-color: #742636; 
+}
+
+form {
+    background-color: #fcb9b2;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    margin-top: 20px;
+    }
+
+input[type="text"], textarea {
+    background-color: #b36063;
+    border: 3px solid #933043;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    width: 99%;
+    color: #edd2d2;
+}
+
+select {
+    background-color: #b36063;
+    border: 3px solid #933043;
+    color: #edd2d2;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
 }
 </style>
 {% endblock %}
