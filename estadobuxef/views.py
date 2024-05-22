@@ -2,9 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import NuevoReporteForm, Lugar, Reporte
+from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, RegisterForm
-
-
 
 # Create your views here.
 def home(request):
