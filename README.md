@@ -24,7 +24,9 @@ Linux/Mac:
 
 ## Install Django
 
-`pip install django`
+The project uses Django 5.0.6. To install it, run:
+
+`pip install django==5.0.6`
 
 Now we can start the server with: `python manage.py runserver`
 
