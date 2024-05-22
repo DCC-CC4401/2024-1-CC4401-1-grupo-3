@@ -1,51 +1,70 @@
-.container {
-    width: 300px;
-    margin: 0 auto;
+.sign-container {
+    width: 600px;
     position: relative;
-    border: 3px solid black;
+    padding-top: 2em;
 }
 .tab-container {
     display: flex;
-    justify-content: space-between;
+    justify-content:flex-end;
     color: #FCB9B2;
+    position: relative;
+    right: 30px;
 }
+
 .tab {
     flex: 1;
     text-align: center;
     padding: 10px;
     cursor: pointer;
     background-color: #8C2F39;
-    border: 1px solid #ccc;
     border-bottom: none;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px 10px 0 0;
     transition: background-color 0.3s;
+    max-width: fit-content;
+    max-height:min-content;
 }
+
 .tab.active {
     background-color: #461220;
-    border-bottom: 1px solid #e0e0e0;
-    color: white;
+    color: #FCB9B2;
 }
+
 .form-container {
-    border: 1px solid #ccc;
-    border-radius: 0 0 5px 5px;
+    color: #B23A48;
+    border-radius: 10px 10px 10px 10px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #461220;
 }
+
+form p {
+    position: relative;
+    max-width: 100%;
+}
+
 form {
     display: none;
 }
+
 form.active {
-    display: block;
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    flex-direction: column;
 }
+
 input[type="submit"] {
-    background-color: #7f9cf5;
-    color: white;
+    background-color: #B23A48;
+    color: #461220;
     border: none;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-weight:bold;
+    position: relative;
+    margin: 8px;
 }
+
 input[type="submit"]:hover {
     background-color: #6b7fd7;
 }
