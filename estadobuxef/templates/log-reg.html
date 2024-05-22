@@ -9,29 +9,31 @@
 {% endblock %} 
 
 {% block content %}
-<div class="sign-container">
+<div class="main-container">
+  <div class="sign-container">
 
-  <div class="tab-container">
-    <div class="tab active" data-target="#login-form">LOG IN</div>
-    <div class="tab" data-target="#signup-form">REGISTER</div>
+    <div class="tab-container">
+      <div class="tab active" data-target="#login-form">LOG IN</div>
+      <div class="tab" data-target="#signup-form">REGISTER</div>
+    </div>
+
+    <div class="form-container">
+      <form id="login-form" class="active" method="POST" novalidate>
+        {% csrf_token %}
+        <h2>Ingresa para mandar tu reporte</h2>
+        {{login_form.as_p}}
+        <input type="submit" value="Login" />
+      </form>
+
+      <form id="signup-form" method="POST" novalidate>
+        {% csrf_token %}
+        <h2>Regístrate para mandar tu reporte</h2>
+        {{ register_form.as_p }}		
+        <input type="submit" value="Register" />
+      </form>
+    </div>
+
   </div>
-
-  <div class="form-container">
-    <form id="login-form" class="active" method="POST" novalidate>
-      {% csrf_token %}
-      <h2>Ingresa para mandar tu reporte</h2>
-      {{login_form.as_p}}
-      <input type="submit" value="Login" />
-    </form>
-
-    <form id="signup-form" method="POST" novalidate>
-      {% csrf_token %}
-      <h2>Regístrate para mandar tu reporte</h2>
-      {{ register_form.as_p }}		
-      <input type="submit" value="Register" />
-    </form>
-  </div>
-
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
