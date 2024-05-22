@@ -14,7 +14,7 @@
       <form id="login-form" class="active" method="POST" novalidate>
         {% csrf_token %}
         <h2>Ingresa para mandar tu reporte</h2>
-        {{form.as_p}}
+        {{login_form.as_p}}
         <input type="submit" value="Login" />
       </form>
    </div>
@@ -22,7 +22,7 @@
       <form id="signup-form" method="POST" novalidate>
         {% csrf_token %}
         <h2>Regístrate para mandar tu reporte</h2>
-        {{ form.as_p }}		
+        {{ register_form.as_p }}		
         <input type="submit" value="Register" />
       </form>
     </div>
