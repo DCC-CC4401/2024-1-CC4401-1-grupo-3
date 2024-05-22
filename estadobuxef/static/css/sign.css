@@ -2,6 +2,7 @@
     width: 300px;
     margin: 0 auto;
     position: relative;
+    border: 3px solid black;
 }
 .tab-container {
     display: flex;
@@ -22,6 +23,7 @@
 .tab.active {
     background-color: #461220;
     border-bottom: 1px solid #e0e0e0;
+    color: white;
 }
 .form-container {
     border: 1px solid #ccc;
