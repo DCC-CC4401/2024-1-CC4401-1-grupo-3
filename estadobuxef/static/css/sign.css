@@ -1,0 +1,51 @@
+.container {
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+    border: 3px solid black;
+}
+.tab-container {
+    display: flex;
+    justify-content: space-between;
+    color: #FCB9B2;
+}
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #8C2F39;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.3s;
+}
+.tab.active {
+    background-color: #461220;
+    border-bottom: 1px solid #e0e0e0;
+    color: white;
+}
+.form-container {
+    border: 1px solid #ccc;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+form {
+    display: none;
+}
+form.active {
+    display: block;
+}
+input[type="submit"] {
+    background-color: #7f9cf5;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+input[type="submit"]:hover {
+    background-color: #6b7fd7;
+}

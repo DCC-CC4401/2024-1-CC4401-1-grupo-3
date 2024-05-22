@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -10,19 +11,19 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
   </head>
   <body>
     <div class="navbar">
-      <h1> ESTADOBUXEF </h1>
-            {% if usuario %}
-                <a> {{usuario}} </a>
-            {% else %}
-            <a href="{% url 'log-reg' %}">Login</a>
-            {% endif %}
+      <a href="{% url 'home' %}" style="font-size: x-large; margin-left: 1em;">ESTADOBUXEF</a>
+      {% if usuario %}
+          <a> {{usuario}} </a>
+      {% else %}
+      <a href="{% url 'log-reg' %}">Login</a>
+      {% endif %}
     </div>
+    <section class="main-container">
     {% block content %}{% endblock %}
+    </section>
   </body>
 </html>
