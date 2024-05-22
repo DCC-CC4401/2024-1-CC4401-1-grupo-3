@@ -37,10 +37,12 @@ Check that `estadobuxef/migrations` is empty. If it's not, delete everything ins
 Create migrations for the application:
 
 `python manage.py makemigrations`
+`python manage.py makemigrations estadobuxef`
 
 Now import them:
 
 `python manage.py migrate`
+`python manage.py migrate estadobuxef`
 
 Load the initial data contained as fixtures:
 
