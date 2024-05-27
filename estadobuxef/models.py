@@ -1,10 +1,9 @@
-from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
 # Create your models here.
-class UsuarioRegistrado(User):
+class UsuarioRegistrado(AbstractUser):
     pass
 
 class Estudiante(UsuarioRegistrado):
@@ -25,10 +24,3 @@ class Lugar(models.Model):
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, null=False)
-
-
-class NuevoReporteForm(forms.ModelForm):
-
-    class Meta:
-        model = Reporte
-        fields = ['contenido', 'lugar']
