@@ -15,9 +15,9 @@
   </head>
   <body>
     <div class="navbar">
-      <a href="{% url 'home' %}" style="font-size: x-large; margin-left: 1em;">ESTADOBUXEF</a>
-      {% if usuario %}
-          <a> {{usuario}} </a>
+      <a href="{% url 'home' %}" style="font-size: x-large;">ESTADOBUXEF</a>
+      {% if user.is_authenticated %}
+          <a> {{ user.username }} </a>
       {% else %}
       <a href="{% url 'log-reg' %}">Login</a>
       {% endif %}
