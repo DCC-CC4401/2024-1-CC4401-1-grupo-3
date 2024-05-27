@@ -22,17 +22,19 @@
         {% csrf_token %}
         <h2>Ingresa para mandar tu reporte</h2>
         {{login_form.as_p}}
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" name="login_form"/>
       </form>
 
       <form id="signup-form" method="POST" novalidate>
         {% csrf_token %}
         <h2>Regístrate para mandar tu reporte</h2>
         {{ register_form.as_p }}		
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" name="signup-form"/>
       </form>
     </div>
-
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
   </div>
 </div>
 <script>

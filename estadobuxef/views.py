@@ -18,40 +18,43 @@ def home(request):
     elif request.method == "GET":
         return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': Reporte.objects.all()})
 
-
 def log_reg(request):
-    if request.method == 'POST' and 'login-form' in request.POST:
-        form = LoginForm(request.POST)
-    
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request,username=username,password=password)
-            if user:
-                login(request, user)
-                messages.success(request,f'Hi {username.title()}, welcome back!')
-                return HttpResponseRedirect('/')
-        
-        # form is not valid or user is not authenticated
-        messages.error(request,f'Invalid username or password')
-        return render(request,'log-reg.html',{'login_form': login_form, 'register_form': register_form})
-        
-    if request.method=='POST' and 'signup-form' in request.POST:
-        form = RegisterForm(request.POST) 
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
-            user.save()
-            messages.success(request, 'You have singed up successfully.')
-            login(request, user)
-            return HttpResponseRedirect('/')
-        else:
-            return render(request, 'log-reg.html', {'login_form': login_form, 'register_form': register_form})
+    login_form = LoginForm()
+    register_form = RegisterForm()
+    if request.method == 'POST':
+        if 'login_form' in request.POST:
+            login_form = LoginForm(request.POST)
+     
+            if login_form.is_valid():
+                username = login_form.cleaned_data['username']
+                password = login_form.cleaned_data['password']
+                user = authenticate(request,username=username,password=password)
+                if user:
+                    login(request, user)
+                    messages.success(request,f'Hi {username.title()}, welcome back!')
+                    return redirect('home')
             
-    elif request.method == "GET":
-        login_form = LoginForm()
-        register_form = RegisterForm()
-        return render(request,'log-reg.html', {'login_form': login_form, 'register_form': register_form})
+            # form is not valid or user is not authenticated
+            messages.error(request,f'Invalid username or password')
+        
+        if 'signup_form' in request.POST:
+            register_form = RegisterForm(request.POST) 
+            if register_form.is_valid():
+                user = register_form.save(commit=False)
+                user.username = user.username.lower()
+                user.save()
+                messages.success(request, 'You have signed up successfully.')
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.error(request, 'Invalid registration details')
+                
+    context = {
+        'login_form': login_form,
+        'register_form': register_form,
+    }
+        
+    return render(request,'log-reg.html', context=context)
 
 def reports(request):
     if request.method == "GET":
