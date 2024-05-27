@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import NuevoReporteForm, Lugar, Reporte
+from .models import Lugar, Reporte
 from django.contrib.auth import login, authenticate, logout
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, NuevoReporteForm
 
 # Create your views here.
 def home(request):
@@ -34,7 +34,6 @@ def log_reg(request):
                     messages.success(request,f'Hi {username.title()}, welcome back!')
                     return redirect('home')
             
-            # form is not valid or user is not authenticated
             messages.error(request,f'Invalid username or password')
         
         if 'signup_form' in request.POST:

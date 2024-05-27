@@ -1,9 +1,9 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 from django.db import models
 
 
 # Create your models here.
-class UsuarioRegistrado(AbstractUser):
+class UsuarioRegistrado(User):
     pass
 
 class Estudiante(UsuarioRegistrado):
