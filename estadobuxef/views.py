@@ -21,10 +21,12 @@ def home(request):
 def log_reg(request):
     login_form = LoginForm()
     register_form = RegisterForm()
+    active_form = 1 #default 1 for login
+
     if request.method == 'POST':
         if 'login_form' in request.POST:
             login_form = LoginForm(request.POST)
-     
+            active_form = 1
             if login_form.is_valid():
                 username = login_form.cleaned_data['username']
                 password = login_form.cleaned_data['password']
@@ -36,8 +38,9 @@ def log_reg(request):
             
             messages.error(request,f'Invalid username or password')
         
-        if 'signup_form' in request.POST:
+        else:
             register_form = RegisterForm(request.POST) 
+            active_form = 0
             if register_form.is_valid():
                 user = register_form.save(commit=False)
                 user.username = user.username.lower()
@@ -51,6 +54,7 @@ def log_reg(request):
     context = {
         'login_form': login_form,
         'register_form': register_form,
+        'active_form': active_form,
     }
         
     return render(request,'log-reg.html', context=context)

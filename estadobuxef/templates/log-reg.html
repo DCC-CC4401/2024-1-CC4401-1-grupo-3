@@ -13,23 +13,23 @@
   <div class="sign-container">
 
     <div class="tab-container">
-      <div class="tab active" data-target="#login-form">LOG IN</div>
-      <div class="tab" data-target="#signup-form">REGISTER</div>
+      <div class="tab {% if active_form %}active{% endif %}" data-target="#login-form">LOG IN</div>
+      <div class="tab {% if not active_form %}active{% endif %}" data-target="#signup-form">REGISTER</div>
     </div>
 
     <div class="form-container">
-      <form id="login-form" class="active" method="POST" novalidate>
+      <form id="login-form" class="{% if active_form %}active{% endif %}" method="POST" novalidate>
         {% csrf_token %}
         <h2>Ingresa para mandar tu reporte</h2>
         {{login_form.as_p}}
         <input type="submit" value="Login" name="login_form"/>
       </form>
 
-      <form id="signup-form" method="POST" novalidate>
+      <form id="signup-form" class="{% if not active_form %}active{% endif %}" method="POST" novalidate>
         {% csrf_token %}
         <h2>Regístrate para mandar tu reporte</h2>
         {{ register_form.as_p }}		
-        <input type="submit" value="Register" name="signup-form"/>
+        <input type="submit" value="Register" name="signup_form"/>
       </form>
     </div>
     {% for message in messages %}
