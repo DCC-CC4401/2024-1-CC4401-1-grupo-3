@@ -31,7 +31,7 @@
         </div>
         <div>
             <h2>Ingresar Reporte</h2>
-{#            {% if usuario %}#}
+            {% if user.is_authenticated %}
             <form method="post">
             {% csrf_token %}
                 <div id="lugar">
@@ -51,10 +51,10 @@
                     <button type="submit">Enviar</button>
                 </div>
             </form>
-{#            {% else %}#}
+            {% else %}
                 <h3>Para publicar reportes debe registrarse</h3>
                 <a href="{% url 'log-reg' %}" class="reglog-btn">Registrarse</a>
-{#            {% endif %}#}
+            {% endif %}
         </div>
     </div>
 </div>
