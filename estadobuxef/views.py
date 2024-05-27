@@ -59,6 +59,11 @@ def log_reg(request):
         
     return render(request,'log-reg.html', context=context)
 
+def sign_out(request):
+    logout(request)
+    messages.success(request,f'You have been logged out.')
+    return redirect('log-reg')        
+
 def reports(request):
     if request.method == "GET":
         return render(request, "reports.html", {'data': Reporte.objects.all()})
