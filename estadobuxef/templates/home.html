@@ -9,24 +9,24 @@
 {% block content %}
     <div>
         <div class="container">
-            <h2>Últimos Reportes</h2>
+            <h2>ÚLTIMOS REPORTES</h2>
             <table>
             <tr>
-                <th>Hora</th>
                 <th>Lugar</th>
                 <th>Suceso</th>
+                <th>Hora</th>
             </tr>
             {% if reportes %}
                 {% for reporte in reportes %}
                 <tr>
-                    <td>{{ reporte.hora }}</td>
                     <td>{{ reporte.lugar.nombre }}</td>
                     <td>{{ reporte.contenido }}</td>
+                    <td>{{ reporte.hora|date:"H:i" }}</td>
                 </tr>
                 {% endfor %}
             {% endif %}
             </table>
-            <a href="{% url 'reports' %}">Ver más</a>
+            <a class="all-reports" href="{% url 'reports' %}">Ver más</a>
         </div>
         <div>
             <h2>Ingresar Reporte</h2>

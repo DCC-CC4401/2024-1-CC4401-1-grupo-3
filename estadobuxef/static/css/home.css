@@ -36,7 +36,7 @@ button:hover {
 
 table {
     width: 100%;
-    margin-top: 20px;
+    margin: 10px;
     border-collapse: collapse;
 }
 
@@ -105,4 +105,10 @@ label {
     border: 3px solid var(--input-border);
     background-color: var(--input-bg);
     color: var(--input-text);
+}
+
+.all-reports {
+    /* text-decoration: none; */
+    color: var(--text-color);
+    font-weight: bold;
 }
