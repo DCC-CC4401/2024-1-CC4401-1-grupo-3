@@ -1,14 +1,15 @@
 :root {
-  --black-color: #461220;
   --background-color: #FED0BB;
+  --text-color: #461220;
   --pink-color: #FC2865;
+  --navbar-bg: #B23A48;
 }
 
 body {
   margin: 0;
   background-color: var(--background-color);
   font: 1rem 'Fira Sans', sans-serif;
-  color: #461220;
+  color: var(--text-color);
 }
 
 /* NAV BAR STUFF */
@@ -18,13 +19,21 @@ body {
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
-  background: #B23A48;
+  background-color: var(--navbar-bg);
   /* border-radius: .25em; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  padding: 0 1em;
+  box-sizing: border-box;
+  z-index: 1000;
   margin-bottom: 1em;
 }
 
 .navbar > * {
-  color: var(--black-color);
+  color: var(--text-color);
 }
 
 .navbar a {
@@ -41,6 +50,8 @@ body {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  margin-top: 4em;
 }
 
 .container {
@@ -50,14 +61,12 @@ body {
   border-radius: .25em;
   padding: 20px;
   margin: 15px;
-
+  align-items: center;
 }
 
 .foot {
   text-align: right;
 }
-
-
 
 .button {
   font: 1rem 'Fira Sans', sans-serif;
