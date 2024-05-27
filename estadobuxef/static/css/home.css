@@ -112,3 +112,21 @@ label {
     color: var(--text-color);
     font-weight: bold;
 }
+
+.add-report {
+    display: none;
+}
+
+.show {display:block;}
+
+.dropdown {
+    width: 100%;
+}
+
+.dropdown::after {
+    content:"\025bc";
+}
+
+.dropdown.active::after {
+    content: "\025b2";
+  }

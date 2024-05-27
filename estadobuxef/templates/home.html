@@ -7,29 +7,30 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <div class="container">
-            <h2>ÚLTIMOS REPORTES</h2>
-            <table>
+<div>
+    <div class="container">
+        <h2>ÚLTIMOS REPORTES</h2>
+        <table>
+        <tr>
+            <th>Lugar</th>
+            <th>Suceso</th>
+            <th>Hora</th>
+        </tr>
+        {% if reportes %}
+            {% for reporte in reportes %}
             <tr>
-                <th>Lugar</th>
-                <th>Suceso</th>
-                <th>Hora</th>
+                <td>{{ reporte.lugar.nombre }}</td>
+                <td>{{ reporte.contenido }}</td>
+                <td>{{ reporte.hora|date:"H:i" }}</td>
             </tr>
-            {% if reportes %}
-                {% for reporte in reportes %}
-                <tr>
-                    <td>{{ reporte.lugar.nombre }}</td>
-                    <td>{{ reporte.contenido }}</td>
-                    <td>{{ reporte.hora|date:"H:i" }}</td>
-                </tr>
-                {% endfor %}
-            {% endif %}
-            </table>
-            <a class="all-reports" href="{% url 'reports' %}">Ver más</a>
-        </div>
-        <div>
-            <h2>Ingresar Reporte</h2>
+            {% endfor %}
+        {% endif %}
+        </table>
+        <a class="all-reports" href="{% url 'reports' %}">Ver más</a>
+    </div>
+    <div>
+        <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte </button>
+        <div id="add-report" class="add-report">
             {% if user.is_authenticated %}
             <form method="post">
             {% csrf_token %}
@@ -51,11 +52,16 @@
                 </div>
             </form>
             {% else %}
-                <h3>Para publicar reportes debe registrarse</h3>
+                <p>Para publicar reportes debe registrarse</p>
                 <a href="{% url 'log-reg' %}" class="reglog-btn">Registrarse</a>
             {% endif %}
         </div>
     </div>
-
-
+</div>
+<script>
+function myFunction() {
+  document.getElementById("add-report").classList.toggle("show");
+  document.getElementById("ingresar-btn").classList.toggle("active");
+}
+</script>
 {% endblock %}
