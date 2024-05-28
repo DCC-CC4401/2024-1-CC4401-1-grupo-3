@@ -50,6 +50,10 @@ def log_reg(request):
                 return redirect('home')
             else:
                 messages.error(request, 'Invalid registration details')
+
+    else:
+        if request.GET.get('form') == 'signup':
+            active_form = 0
                 
     context = {
         'login_form': login_form,

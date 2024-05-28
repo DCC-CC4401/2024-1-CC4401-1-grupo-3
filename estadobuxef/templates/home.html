@@ -26,8 +26,9 @@
             {% endfor %}
         {% endif %}
         </table>
-        <a class="all-reports" href="{% url 'reports' %}">Ver más</a>
+        <a class="not-btn" href="{% url 'reports' %}">Ver más</a>
     </div>
+    
     <div>
         <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte </button>
         <div id="add-report" class="add-report">
@@ -39,7 +40,7 @@
                     <select id="lugar" name="lugar">
                         <option value="null">Seleccione lugar del suceso</option>
                         {% for lugar in lugares %}
-                            <option value={{ lugar.id }}>{{ lugar.nombre }}</option>
+                            <option value="{{ lugar.id }}">{{ lugar.nombre }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -52,8 +53,9 @@
                 </div>
             </form>
             {% else %}
-                <p>Para publicar reportes debe registrarse</p>
-                <a href="{% url 'log-reg' %}" class="reglog-btn">Registrarse</a>
+                <p>Para publicar reportes debe 
+                    <a href="{% url 'log-reg' %}?form=signup" class="not-btn">registrarse</a>
+                </p>
             {% endif %}
         </div>
     </div>

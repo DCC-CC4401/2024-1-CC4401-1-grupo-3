@@ -64,7 +64,7 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
-    margin-top: 20px;
+    width: 100%;
 }
 
 select, textarea, input[type="text"] {
@@ -98,7 +98,7 @@ label {
 }
 
 #contenido {
-    width: 98.7%;
+    width: 92%;
     height: 50px;
     padding: 8px;
     border-radius: 4px;
@@ -107,7 +107,7 @@ label {
     color: var(--input-text);
 }
 
-.all-reports {
+.not-btn {
     /* text-decoration: none; */
     color: var(--text-color);
     font-weight: bold;
@@ -117,7 +117,10 @@ label {
     display: none;
 }
 
-.show {display:block;}
+.show {
+    display: flex;
+    justify-content: center;
+}
 
 .dropdown {
     width: 100%;
