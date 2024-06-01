@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} Registrate {% endblock %}
+{% block title %} Ingresa {% endblock %}
 
 {% block css%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/sign.css' %}">
@@ -28,7 +28,10 @@
       <form id="signup-form" class="{% if not active_form %}active{% endif %}" method="POST" novalidate>
         {% csrf_token %}
         <h2>Regístrate para mandar tu reporte</h2>
-        {{ register_form.as_p }}		
+        <p>{{ register_form.username.label }}: {{ register_form.username }}</p>
+        <p>{{ register_form.email.label }}: {{ register_form.email }}</p>	
+        <p>{{ register_form.password1.label }}: {{ register_form.password1 }}</p>	
+        <p>{{ register_form.password2.label }}: {{ register_form.password2 }}</p>		
         <input type="submit" value="Register" name="signup_form"/>
       </form>
     </div>

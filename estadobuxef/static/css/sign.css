@@ -63,8 +63,14 @@ input[type="submit"] {
     font-weight:bold;
     position: relative;
     margin: 8px;
+    font: 1rem 'Inter', sans-serif;
 }
 
 input[type="submit"]:hover {
     background-color: #6b7fd7;
+}
+
+.form-input {
+    display: inline-block;
+    justify-content: space-between;
 }
