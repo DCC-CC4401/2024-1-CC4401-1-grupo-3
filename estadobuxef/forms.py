@@ -14,6 +14,15 @@ class RegisterForm(UserCreationForm):
         model=User
         fields = ['username','email','password1','password2'] 
 
+
+"""
+** Models **
+``NuevoReporteForm``
+    A form that inherits from the Django ModelForm to create
+    a new report.
+"""
+
+
 class NuevoReporteForm(forms.ModelForm):
     class Meta:
         model = Reporte
