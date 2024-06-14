@@ -1,4 +1,3 @@
-from django import forms
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -53,17 +52,3 @@ class Lugar(models.Model):
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, null=False)
-
-
-"""
-** Models **
-``NuevoReporteForm``
-    A form that inherits from the Django ModelForm to create
-    a new report.
-"""
-
-
-class NuevoReporteForm(forms.ModelForm):
-    class Meta:
-        model = Reporte
-        fields = ['contenido', 'lugar']

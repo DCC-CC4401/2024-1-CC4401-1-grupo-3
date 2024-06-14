@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Menú principal {% endblock %}
+{% block title %} Menú Principal {% endblock %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
@@ -8,38 +8,39 @@
 
 {% block content %}
 <div>
-    <div>
-        <div class="container">
-            <h2>Últimos Reportes</h2>
-            <table>
+    <div class="container">
+        <h2>ÚLTIMOS REPORTES</h2>
+        <table>
+        <tr>
+            <th>Lugar</th>
+            <th>Suceso</th>
+            <th>Hora</th>
+        </tr>
+        {% if reportes %}
+            {% for reporte in reportes %}
             <tr>
-                <th>Hora</th>
-                <th>Lugar</th>
-                <th>Suceso</th>
+                <td>{{ reporte.lugar.nombre }}</td>
+                <td>{{ reporte.contenido }}</td>
+                <td>{{ reporte.hora|date:"H:i" }}</td>
             </tr>
-            {% if reportes %}
-                {% for reporte in reportes %}
-                <tr>
-                    <td>{{ reporte.hora }}</td>
-                    <td>{{ reporte.lugar.nombre }}</td>
-                    <td>{{ reporte.contenido }}</td>
-                </tr>
-                {% endfor %}
-            {% endif %}
-            </table>
-            <a href="{% url 'reports' %}">Ver más</a>
-        </div>
-        <div>
-            <h2>Ingresar Reporte</h2>
-{#            {% if usuario %}#}
+            {% endfor %}
+        {% endif %}
+        </table>
+        <a class="not-btn" href="{% url 'reports' %}">Ver más</a>
+    </div>
+    
+    <div>
+        <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte </button>
+        <div id="add-report" class="add-report">
+            {% if user.is_authenticated %}
             <form method="post">
             {% csrf_token %}
                 <div id="lugar">
-                    <label for=lugar">Lugar: </label>
+                    <label for="lugar">Lugar: </label>
                     <select id="lugar" name="lugar">
                         <option value="null">Seleccione lugar del suceso</option>
                         {% for lugar in lugares %}
-                            <option value={{ lugar.id }}>{{ lugar.nombre }}</option>
+                            <option value="{{ lugar.id }}">{{ lugar.nombre }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -51,13 +52,18 @@
                     <button type="submit">Enviar</button>
                 </div>
             </form>
-{#            {% else %}#}
-                <h3>Para publicar reportes debe registrarse</h3>
-                <a href="{% url 'log-reg' %}" class="reglog-btn">Registrarse</a>
-{#            {% endif %}#}
+            {% else %}
+                <p>Para publicar reportes debe 
+                    <a href="{% url 'log-reg' %}?form=signup" class="not-btn">registrarse</a>
+                </p>
+            {% endif %}
         </div>
     </div>
 </div>
-
-
+<script>
+function myFunction() {
+  document.getElementById("add-report").classList.toggle("show");
+  document.getElementById("ingresar-btn").classList.toggle("active");
+}
+</script>
 {% endblock %}
