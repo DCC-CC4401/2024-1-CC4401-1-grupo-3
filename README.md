@@ -24,7 +24,9 @@ Linux/Mac:
 
 ## Install Django
 
-`pip install django`
+The project uses Django 5.0.6. To install it, run:
+
+`pip install django==5.0.6`
 
 Now we can start the server with: `python manage.py runserver`
 
@@ -35,10 +37,12 @@ Check that `estadobuxef/migrations` is empty. If it's not, delete everything ins
 Create migrations for the application:
 
 `python manage.py makemigrations`
+`python manage.py makemigrations estadobuxef`
 
 Now import them:
 
 `python manage.py migrate`
+`python manage.py migrate estadobuxef`
 
 Load the initial data contained as fixtures:
 

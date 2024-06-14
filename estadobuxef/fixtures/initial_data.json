@@ -104,5 +104,25 @@
         "Utensilios": "Hay confort solo dentro de los baños, afuera hay 2 dispensadores de jabón, 2 lavamanos, 1 basurero y papel para secarse las manos"
       }
     }
+  },
+  {
+    "model": "estadobuxef.reporte",
+    "pk": 1,
+    "fields": {
+      "hora": "2024-05-22T17:26:25.938Z",
+      "contenido": "Proyector en mal estado",
+      "lugar": 1,
+      "image": ""
+    }
+  },
+  {
+    "model": "estadobuxef.reporte",
+    "pk": 2,
+    "fields": {
+      "hora": "2024-05-22T17:26:45.683Z",
+      "contenido": "Falta papel higiénico en los baños!!",
+      "lugar": 5,
+      "image": ""
+    }
   }
 ]
