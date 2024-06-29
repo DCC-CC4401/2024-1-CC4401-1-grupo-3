@@ -33,8 +33,8 @@ def home(request):
     elif request.method == "GET":
         reportes = Reporte.objects.all()
         reportes = reportes.order_by('-hora')
-        if reportes.count() > 3:
-            reportes = reportes[:3]
+        if reportes.count() > 5:
+            reportes = reportes[:5]
         return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': reportes})
 
 def log_reg(request):
