@@ -31,7 +31,9 @@ def home(request):
             form_reporte = NuevoReporteForm()
         return HttpResponseRedirect('/')
     elif request.method == "GET":
-        return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': Reporte.objects.all()})
+        reportes = Reporte.objects.all()
+        reportes = reportes.order_by('-hora')
+        return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': reportes})
 
 def log_reg(request):
     """
