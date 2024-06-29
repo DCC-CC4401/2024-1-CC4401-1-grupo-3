@@ -17,23 +17,13 @@
             <th>Hora</th>
         </tr>
         {% if reportes %}
-            {% if reportes|length > 5 %}
-                {% for reporte in reportes|slice:":5" %}
-                    <tr>
-                        <td>{{ reporte.lugar.nombre }}</td>
-                        <td>{{ reporte.contenido }}</td>
-                        <td>{{ reporte.hora|date:"H:i" }}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                {% for reporte in reportes %}
-                    <tr>
-                        <td>{{ reporte.lugar.nombre }}</td>
-                        <td>{{ reporte.contenido }}</td>
-                        <td>{{ reporte.hora|date:"H:i" }}</td>
-                    </tr>
-                {% endfor %}
-            {% endif %}
+            {% for reporte in reportes %}
+                <tr>
+                    <td>{{ reporte.lugar.nombre }}</td>
+                    <td>{{ reporte.contenido }}</td>
+                    <td>{{ reporte.hora|date:"H:i" }}</td>
+                </tr>
+            {% endfor %}
         {% endif %}
         </table>
         <a class="not-btn" href="{% url 'reports' %}">Ver más</a>
