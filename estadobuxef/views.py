@@ -20,7 +20,7 @@ def home(request):
     ** Description **
     If the request method is POST, the form is validated and the report is saved.
     If the request method is GET, the home page is rendered with the context to
-    show all the places and reports. The template contains a form to create a new report.
+    show all the places and the latest 5 reports. The template contains a form to create a new report.
     """
     if request.method == "POST":
         form_reporte = NuevoReporteForm(request.POST)
@@ -31,7 +31,11 @@ def home(request):
             form_reporte = NuevoReporteForm()
         return HttpResponseRedirect('/')
     elif request.method == "GET":
-        return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': Reporte.objects.all()})
+        reportes = Reporte.objects.all()
+        reportes = reportes.order_by('-hora')
+        if reportes.count() > 5:
+            reportes = reportes[:5]
+        return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': reportes})
 
 def log_reg(request):
     """

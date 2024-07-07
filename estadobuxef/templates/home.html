@@ -18,11 +18,11 @@
         </tr>
         {% if reportes %}
             {% for reporte in reportes %}
-            <tr>
-                <td>{{ reporte.lugar.nombre }}</td>
-                <td>{{ reporte.contenido }}</td>
-                <td>{{ reporte.hora|date:"H:i" }}</td>
-            </tr>
+                <tr>
+                    <td>{{ reporte.lugar.nombre }}</td>
+                    <td>{{ reporte.contenido }}</td>
+                    <td>{{ reporte.hora|date:"H:i" }}</td>
+                </tr>
             {% endfor %}
         {% endif %}
         </table>
