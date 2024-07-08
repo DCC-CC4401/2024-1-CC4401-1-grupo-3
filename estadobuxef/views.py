@@ -1,9 +1,11 @@
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Lugar, Reporte
 from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
+import json
 
 # Create your views here.
 def home(request):
@@ -23,12 +25,23 @@ def home(request):
     show all the places and the latest 5 reports. The template contains a form to create a new report.
     """
     if request.method == "POST":
-        form_reporte = NuevoReporteForm(request.POST)
-        if form_reporte.is_valid():
-            cleaned_data = form_reporte.cleaned_data
-            # Reporte.objects.create(**cleaned_data)
-            form_reporte.save()
-            form_reporte = NuevoReporteForm()
+        if len(json.loads(request.body)) == 3:
+            request_data = json.loads(request.body)
+            reporte = Reporte.objects.get(pk=request_data['reporteId'])
+            reporte_old_status = request_data['reporteOldStatus']
+            reporte_new_status = request_data['reporteNewStatus']
+            print(reporte_old_status, reporte_new_status, reporte)
+            if reporte_old_status == reporte.estado and reporte_new_status != reporte.estado:
+                reporte.estado = reporte_new_status
+                reporte.save()
+            return HttpResponseRedirect('/')
+        else:
+            form_reporte = NuevoReporteForm(request.POST)
+            if form_reporte.is_valid():
+                cleaned_data = form_reporte.cleaned_data
+                # Reporte.objects.create(**cleaned_data)
+                form_reporte.save()
+                form_reporte = NuevoReporteForm()
         return HttpResponseRedirect('/')
     elif request.method == "GET":
         reportes = Reporte.objects.all()
@@ -75,7 +88,7 @@ def log_reg(request):
             messages.error(request,f'Invalid username or password')
         
         else:
-            register_form = RegisterForm(request.POST) 
+            register_form = RegisterForm(request.POST)
             active_form = 0
             if register_form.is_valid():
                 user = register_form.save(commit=False)

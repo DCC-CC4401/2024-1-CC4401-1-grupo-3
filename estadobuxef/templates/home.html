@@ -3,69 +3,77 @@
 {% block title %} Menú Principal {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/home.js' %}" type="text/javascript">
+    </script>
 {% endblock %}
 
 {% block content %}
-<div>
-    <div class="container">
-        <h2>ÚLTIMOS REPORTES</h2>
-        <table>
-        <tr>
-            <th>Lugar</th>
-            <th>Suceso</th>
-            <th>Hora</th>
-            <th>Estado</th>
-        </tr>
-        {% if reportes %}
-            {% for reporte in reportes %}
-                <tr>
-                    <td>{{ reporte.lugar.nombre }}</td>
-                    <td>{{ reporte.contenido }}</td>
-                    <td>{{ reporte.hora|date:"H:i" }}</td>
-                    <td>{{ reporte.estado }}</td>
-                </tr>
-            {% endfor %}
-        {% endif %}
-        </table>
-        <a class="not-btn" href="{% url 'reports' %}">Ver más</a>
-    </div>
-    
     <div>
-        <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte </button>
-        <div id="add-report" class="add-report">
-            {% if user.is_authenticated %}
-            <form method="post">
-            {% csrf_token %}
-                <div id="lugar">
-                    <label for="lugar">Lugar: </label>
-                    <select id="lugar" name="lugar">
-                        <option value="null">Seleccione lugar del suceso</option>
-                        {% for lugar in lugares %}
-                            <option value="{{ lugar.id }}">{{ lugar.nombre }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div id="suceso">
-                    <label for="contenido">Suceso:</label>
-                    <textarea id="contenido" name="contenido"></textarea>
-                </div>
-                <div >
-                    <button type="submit">Enviar</button>
-                </div>
-            </form>
-            {% else %}
-                <p>Para publicar reportes debe 
-                    <a href="{% url 'log-reg' %}?form=signup" class="not-btn">registrarse</a>
-                </p>
-            {% endif %}
+        <div class="container">
+            <h2>ÚLTIMOS REPORTES</h2>
+            <table class="table">
+                <tr>
+                    <th>Lugar</th>
+                    <th>Suceso</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+                {% if reportes %}
+                    {% for reporte in reportes %}
+                        <tr>
+                            <td>{{ reporte.lugar.nombre }}</td>
+                            <td>{{ reporte.contenido }}</td>
+                            <td>{{ reporte.hora|date:"H:i" }}</td>
+                            <td class="reporte-estado">{{ reporte.estado }}</td>
+                            <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </table>
+            <a class="not-btn" href="{% url 'reports' %}">Ver más</a>
+        </div>
+
+        <div>
+            <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte</button>
+            <div id="add-report" class="add-report">
+                {% if user.is_authenticated %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div id="lugar">
+                            <label for="lugar">Lugar: </label>
+                            <select id="lugar" name="lugar">
+                                <option value="null">Seleccione lugar del suceso</option>
+                                {% for lugar in lugares %}
+                                    <option value="{{ lugar.id }}">{{ lugar.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div id="suceso">
+                            <label for="contenido">Suceso:</label>
+                            <textarea id="contenido" name="contenido"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <p>Para publicar reportes debe
+                        <a href="{% url 'log-reg' %}?form=signup" class="not-btn">registrarse</a>
+                    </p>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
-<script>
-function myFunction() {
-  document.getElementById("add-report").classList.toggle("show");
-  document.getElementById("ingresar-btn").classList.toggle("active");
-}
-</script>
+    <script>
+        function myFunction() {
+            document.getElementById("add-report").classList.toggle("show");
+            document.getElementById("ingresar-btn").classList.toggle("active");
+        }
+    </script>
 {% endblock %}
+
