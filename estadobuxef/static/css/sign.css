@@ -70,7 +70,31 @@ input[type="submit"]:hover {
     background-color: #6b7fd7;
 }
 
-.form-input {
+/* .form-input {
     display: inline-block;
     justify-content: space-between;
+} */
+
+.form-group {
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    margin-bottom: 1em;
+}
+
+label {
+    flex: 1; 
+    max-width: 150px; 
+    margin-right: 5em; 
+}
+
+input {
+    flex: 2;
+    border-radius: 2px;
+}
+
+.error {
+    color: #edbaba;
+    font-size: smaller;
+    margin-bottom: 1em; 
 }
