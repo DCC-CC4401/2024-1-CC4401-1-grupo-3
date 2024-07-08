@@ -21,17 +21,61 @@
       <form id="login-form" class="{% if active_form %}active{% endif %}" method="POST" novalidate>
         {% csrf_token %}
         <h2>Ingresa para mandar tu reporte</h2>
-        {{login_form.as_p}}
+        <div class="fields">
+          <div class="form-group">
+            <label>{{ login_form.username.label }}:</label>
+            {{ login_form.username }}
+            {% for error in login_form.username.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+          </div>
+          <div class="form-group">
+              <label>{{ login_form.password.label }}:</label>
+              {{ login_form.password }}
+              {% for error in login_form.password.errors %}
+                  <span class="error">{{ error }}</span>
+              {% endfor %}
+          </div>
+        </div>
         <input type="submit" value="Login" name="login_form"/>
       </form>
 
       <form id="signup-form" class="{% if not active_form %}active{% endif %}" method="POST" novalidate>
         {% csrf_token %}
         <h2>Regístrate para mandar tu reporte</h2>
-        <p>{{ register_form.username.label }}: {{ register_form.username }}</p>
-        <p>{{ register_form.email.label }}: {{ register_form.email }}</p>	
-        <p>{{ register_form.password1.label }}: {{ register_form.password1 }}</p>	
-        <p>{{ register_form.password2.label }}: {{ register_form.password2 }}</p>		
+        <div class="fields">
+          {% for error in register_form.username.errors %}
+          	<span class="error">{{ error }}</span>
+          {% endfor %}
+          <div class="form-group">
+            <label for="id_username">{{ register_form.username.label }}:</label>
+            {{ register_form.username }}
+          </div>
+
+          {% for error in register_form.email.errors %}
+            <span class="error">{{ error }}</span>
+          {% endfor %}
+          <div class="form-group">
+            <label for="id_email">{{ register_form.email.label }}:</label>
+            {{ register_form.email }}
+          </div>
+
+          {% for error in register_form.password1.errors %}
+            <span class="error">{{ error }}</span>
+          {% endfor %}
+          <div class="form-group">
+            <label for="id_password1">{{ register_form.password1.label }}:</label>
+            {{ register_form.password1 }}
+          </div>
+
+          {% for error in register_form.password2.errors %}
+            <span class="error">{{ error }}<br></span>
+          {% endfor %}
+          <div class="form-group">
+            <label for="id_password2">{{ register_form.password2.label }}:</label>
+            {{ register_form.password2 }}
+          </div>
+        </div>
         <input type="submit" value="Register" name="signup_form"/>
       </form>
     </div>
