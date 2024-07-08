@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import Lugar, Reporte
 from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
+from django.core.paginator import Paginator
 import json
 
 # Create your views here.
@@ -128,7 +129,11 @@ def reports(request):
 
     ** Description **
     If the request method is GET, the reports page is rendered with the list
-    of all the reports in the database.
+    of the reports in the database, the reports are going to be shown in sets of 
+    5 with paginated lists.
     """
     if request.method == "GET":
-        return render(request, "reports.html", {'data': Reporte.objects.all()})
+        paginator = Paginator(Reporte.objects.all(), 5)
+        page_number = request.GET.get('page')
+        report_page = paginator.get_page(page_number)
+        return render(request, "reports.html", {'data': report_page})
