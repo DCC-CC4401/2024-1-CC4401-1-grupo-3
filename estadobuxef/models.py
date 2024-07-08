@@ -48,7 +48,7 @@ class Reporte(models.Model):
     contenido = models.TextField()
     lugar = models.ForeignKey('Lugar', on_delete=models.PROTECT)
     image = models.FileField(upload_to='uploads/estudiante/', blank=True, null=True)
-    estado = models.CharField(max_length=1, choices=STATE_CHOICES, default='P')  # default='P' is a good practice to avoid null
+    estado = models.CharField(max_length=1, choices=STATE_CHOICES, default='P', null= True)  # default='P' is a good practice to avoid null
 
 
 class Lugar(models.Model):
@@ -59,4 +59,3 @@ class Lugar(models.Model):
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, null=False)
-
