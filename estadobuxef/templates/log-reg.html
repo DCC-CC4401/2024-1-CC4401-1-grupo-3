@@ -22,19 +22,19 @@
         {% csrf_token %}
         <h2>Ingresa para mandar tu reporte</h2>
         <div class="fields">
+          {% for error in login_form.username.errors %}
+            <span class="error">{{ error }}</span>
+          {% endfor %}
           <div class="form-group">
             <label>{{ login_form.username.label }}:</label>
             {{ login_form.username }}
-            {% for error in login_form.username.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
           </div>
+          {% for error in login_form.password.errors %}
+            <span class="error">{{ error }}</span>
+          {% endfor %}
           <div class="form-group">
               <label>{{ login_form.password.label }}:</label>
               {{ login_form.password }}
-              {% for error in login_form.password.errors %}
-                  <span class="error">{{ error }}</span>
-              {% endfor %}
           </div>
         </div>
         <input type="submit" value="Login" name="login_form"/>
