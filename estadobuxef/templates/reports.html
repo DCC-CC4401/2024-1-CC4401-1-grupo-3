@@ -5,7 +5,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %} 
 {% block content %}
+
 <div style="display: flex; flex-direction: column;align-items: center;">
+
     <h2>REPORTES</h2>
     <div class="reports">
         {% if data %}
@@ -19,6 +21,19 @@
                     {% endif %} -->
             </div>
             {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        {% if data.has_previous %}
+            <a class="button" href="?page=1">Primera</a>
+            <a class="button" href="?page={{ data.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        Pagina {{ data.number }} de {{ data.paginator.num_pages }}.
+
+        {% if data.has_next %}
+            <a class="button" href="?page={{ data.next_page_number }}">Siguiente</a>
+            <a class="button" href="?page={{ data.paginator.num_pages }}">Última</a>
         {% endif %}
     </div>
     <div>
