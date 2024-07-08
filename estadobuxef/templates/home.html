@@ -30,7 +30,7 @@
                             <td>{{ reporte.contenido }}</td>
                             <td>{{ reporte.hora|date:"H:i" }}</td>
                             <td class="reporte-estado">{{ reporte.estado }}</td>
-                            <td><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined">edit</span></td>
+                            <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
                         </tr>
                     {% endfor %}
                 {% endif %}
