@@ -1,14 +1,41 @@
-from django import forms
 from django.contrib.auth.models import User
 from django.db import models
 
+"""
+** Models **
+``UsuarioRegistrado``
+    A model that inherits from the Django User model to use
+    as base for the Estudiante model.
+    
+``Estudiante``
+    A model that inherits from the UsuarioRegistrado model 
+    that represents a student user. In the future, this model
+    will have different behavoir than other registered users.
+"""
 
-# Create your models here.
+
 class UsuarioRegistrado(User):
     pass
 
+
 class Estudiante(UsuarioRegistrado):
     pass
+
+
+"""
+** Models **
+``Reporte``
+    A model that represents a report of an event. It has a
+    date, a content, a place and an optional image.
+    
+``Lugar``
+    A model that represents a place. It has a reference to a category,
+    a name and a data field that can store any JSON data.
+    
+``Categoria``
+    A model that represents a category for a place.
+"""
+
 
 class Reporte(models.Model):
     hora = models.DateTimeField(auto_now_add=True)
@@ -25,10 +52,3 @@ class Lugar(models.Model):
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, null=False)
-
-
-class NuevoReporteForm(forms.ModelForm):
-
-    class Meta:
-        model = Reporte
-        fields = ['contenido', 'lugar']

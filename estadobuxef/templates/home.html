@@ -1,133 +1,46 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Menú principal {% endblock %}
+{% block title %} Menú Principal {% endblock %}
 
 {% block css %}
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
-
-h2 {
-    color: #333;
-    font-size: 24px;
-}
-
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    color: #000000;
-}
-
-th {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #e0e0e0;
-}
-
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #000;
-}
-
-select, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-button {
-    background-color: #933043;
-    color: #f9ecec;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #742636; 
-}
-
-form {
-    background-color: #fcb9b2;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
-    margin-top: 20px;
-    }
-
-input[type="text"], textarea {
-    background-color: #b36063;
-    border: 3px solid #933043;
-    padding: 8px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    width: 99%;
-    color: #edd2d2;
-}
-
-select {
-    background-color: #b36063;
-    border: 3px solid #933043;
-    color: #edd2d2;
-    padding: 8px;
-    border-radius: 4px;
-    width: 100%;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
 <div>
-    <div>
-        <div class="container">
-            <h2>Últimos Reportes</h2>
-            <table>
-            <tr>
-                <th>Hora</th>
-                <th>Lugar</th>
-                <th>Suceso</th>
-            </tr>
-            {% if reportes %}
-                {% for reporte in reportes %}
+    <div class="container">
+        <h2>ÚLTIMOS REPORTES</h2>
+        <table>
+        <tr>
+            <th>Lugar</th>
+            <th>Suceso</th>
+            <th>Hora</th>
+        </tr>
+        {% if reportes %}
+            {% for reporte in reportes %}
                 <tr>
-                    <td>{{ reporte.hora }}</td>
                     <td>{{ reporte.lugar.nombre }}</td>
                     <td>{{ reporte.contenido }}</td>
+                    <td>{{ reporte.hora|date:"H:i" }}</td>
                 </tr>
-                {% endfor %}
-            {% endif %}
-            </table>
-            <a href="{% url 'reports' %}">Ver más</a>
-        </div>
-        <div>
-            <h2>Ingresar Reporte</h2>
-{#            {% if usuario %}#}
+            {% endfor %}
+        {% endif %}
+        </table>
+        <a class="not-btn" href="{% url 'reports' %}">Ver más</a>
+    </div>
+    
+    <div>
+        <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte </button>
+        <div id="add-report" class="add-report">
+            {% if user.is_authenticated %}
             <form method="post">
             {% csrf_token %}
                 <div id="lugar">
-                    <label for=lugar">Lugar: </label>
+                    <label for="lugar">Lugar: </label>
                     <select id="lugar" name="lugar">
                         <option value="null">Seleccione lugar del suceso</option>
                         {% for lugar in lugares %}
-                            <option value={{ lugar.id }}>{{ lugar.nombre }}</option>
+                            <option value="{{ lugar.id }}">{{ lugar.nombre }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -139,13 +52,18 @@ select {
                     <button type="submit">Enviar</button>
                 </div>
             </form>
-{#            {% else %}#}
-                <h3>Para publicar reportes debe registrarse</h3>
-                <a href="{% url 'log-reg' %}">Registrarse</a>
-{#            {% endif %}#}
+            {% else %}
+                <p>Para publicar reportes debe 
+                    <a href="{% url 'log-reg' %}?form=signup" class="not-btn">registrarse</a>
+                </p>
+            {% endif %}
         </div>
     </div>
 </div>
-
-
+<script>
+function myFunction() {
+  document.getElementById("add-report").classList.toggle("show");
+  document.getElementById("ingresar-btn").classList.toggle("active");
+}
+</script>
 {% endblock %}

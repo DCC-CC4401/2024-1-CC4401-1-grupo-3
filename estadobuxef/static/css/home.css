@@ -1,0 +1,135 @@
+:root {
+    --background-color: #FED0BB;
+    --text-color: #461220;
+    --table-border: #ddd;
+    --table-hover-bg: #e0e0e0;
+    --button-bg: #8C2F39;
+    --button-hover-bg: #742636;
+    --form-bg: #fcb9b2;
+    --input-bg: #b36063;
+    --input-border: #933043;
+    --input-text: #f0eded;
+    --navbar-bg: #B23A48;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+button {
+    font: 1rem 'Inter', sans-serif;
+    color: white;
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); */
+    background-color: var(--button-bg);
+    border: 1px solid #863038;
+    border-radius: 5px;
+    padding: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+table {
+    width: 100%;
+    margin: 15px 25px;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid var(--table-border);
+    color: var(--text-color);
+}
+
+th {
+    background-color: #a14851;
+}
+
+tr {
+    background-color: #e68686;
+}
+
+tr:hover {
+    background-color: var(--table-hover-bg);
+}
+
+form {
+    background-color: var(--form-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+select, textarea, input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 3px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+label {
+    font: 1rem 'Inter', sans-serif;
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.reglog-btn {
+    color: #FFFFFF;
+    background-color: var(--button-bg);
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.reglog-btn:hover {
+    background-color: #742636;
+}
+
+#contenido {
+    width: 95%;
+    height: 50px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 3px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+.not-btn {
+    /* text-decoration: none; */
+    color: var(--text-color);
+    font-weight: bolder;
+}
+
+.add-report {
+    display: none;
+}
+
+.show {
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown {
+    width: 100%;
+}
+
+.dropdown::after {
+    content:"\025bc";
+}
+
+.dropdown.active::after {
+    content: "\025b2";
+  }
