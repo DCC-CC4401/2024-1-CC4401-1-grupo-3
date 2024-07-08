@@ -17,10 +17,11 @@ from django.db import models
 class UsuarioRegistrado(User):
     pass
 
-
 class Estudiante(UsuarioRegistrado):
     pass
 
+class Funcionario(UsuarioRegistrado):
+    pass
 
 """
 ** Models **
@@ -38,10 +39,16 @@ class Estudiante(UsuarioRegistrado):
 
 
 class Reporte(models.Model):
+    STATE_CHOICES = (
+        ('A', 'Aprobado'),
+        ('R', 'Rechazado'),
+        ('P', 'Pendiente'),
+    )
     hora = models.DateTimeField(auto_now_add=True)
     contenido = models.TextField()
     lugar = models.ForeignKey('Lugar', on_delete=models.PROTECT)
     image = models.FileField(upload_to='uploads/estudiante/', blank=True, null=True)
+    estado = models.CharField(max_length=1, choices=STATE_CHOICES, default='P', null= True)  # default='P' is a good practice to avoid null
 
 
 class Lugar(models.Model):
