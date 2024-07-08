@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect, Http404, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Lugar, Reporte
 from django.contrib.auth import login, authenticate, logout
@@ -146,6 +146,6 @@ def reports(request):
         return render(request, "reports.html", {'data': report_page})
 
 def lugar(request):
-    nombre = request.GET.get('nombre')
+    nombre = request.GET.get('nombre')  
     lugar = get_object_or_404(Lugar, nombre=nombre)
     return render(request, 'lugar.html', {'lugar': lugar})
