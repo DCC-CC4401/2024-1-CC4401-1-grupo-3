@@ -59,7 +59,7 @@ const changeState = (element, reporte) => {
         const csrftoken = getCookie('csrftoken');
         if (data.reporteOldStatus !== data.reporteNewStatus) {
             console.log("sending request")
-            fetch("", {
+            fetch(location + "/update-report", {
                 headers: {
                     "X-CSRFToken" : csrftoken
                 },

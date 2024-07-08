@@ -1,5 +1,6 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission, AbstractUser, AbstractBaseUser
 from django.db import models
+from django.db.models import TextField, EmailField
 
 """
 ** Models **
@@ -15,13 +16,18 @@ from django.db import models
 
 
 class UsuarioRegistrado(User):
+
     pass
 
 class Estudiante(UsuarioRegistrado):
     pass
 
-class Funcionario(UsuarioRegistrado):
-    pass
+class Funcionario(AbstractBaseUser): 
+    username = TextField(max_length=50, blank=False)
+    email = EmailField(null=False, unique=True)
+    class Meta:
+        permissions = [("can_change_status", "Can change the status of a report")]
+    
 
 """
 ** Models **
@@ -55,6 +61,7 @@ class Lugar(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT, default='Sin categoria')
     nombre = models.CharField('Nombre', max_length=50, null=False)
     data = models.JSONField(default=dict)
+    #imagen = models.FileField(upload_to='uploads/lugar/', blank=True, null=True)
 
 
 class Categoria(models.Model):

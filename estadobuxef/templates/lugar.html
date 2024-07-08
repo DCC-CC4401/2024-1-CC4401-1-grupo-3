@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} Lugar {% endblock %}
+
+{% block css%}
+
+{% endblock %} 
+
+{% block content %}
+<div>
+    {%if lugar%}
+        <h2>{{ lugar.nombre }}</h2>
+
+        <p>{{ lugar.data }}</p>
+    {%endif%}
+</div>
+{% endblock %}

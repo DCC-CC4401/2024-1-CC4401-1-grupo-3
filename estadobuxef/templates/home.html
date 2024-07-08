@@ -26,7 +26,7 @@
                 {% if reportes %}
                     {% for reporte in reportes %}
                         <tr>
-                            <td>{{ reporte.lugar.nombre }}</td>
+                            <td class="reporte-lugar"><a href="{% url 'lugar' reporte.lugar}">{{ reporte.lugar.nombre }}</a></td>
                             <td>{{ reporte.contenido }}</td>
                             <td>{{ reporte.hora|date:"H:i" }}</td>
                             <td class="reporte-estado">{{ reporte.estado }}</td>
