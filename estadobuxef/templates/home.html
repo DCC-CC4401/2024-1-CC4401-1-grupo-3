@@ -15,13 +15,15 @@
             <th>Lugar</th>
             <th>Suceso</th>
             <th>Hora</th>
+            <th>Estado</th>
         </tr>
         {% if reportes %}
             {% for reporte in reportes %}
                 <tr>
                     <td>{{ reporte.lugar.nombre }}</td>
                     <td>{{ reporte.contenido }}</td>
-                    <td>{{ reporte.hora|date:"H:i" }}</td>
+                    <td>{{ reporte.hora|date:"H:i" }}</td>  
+                    <td>{{ reporte.estado }}</td>
                 </tr>
             {% endfor %}
         {% endif %}
