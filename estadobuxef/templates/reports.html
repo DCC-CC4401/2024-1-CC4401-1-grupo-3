@@ -22,6 +22,19 @@
         {% endif %}
     </div>
     <div>
+        {% if data.has_previous %}
+            <a class="button" href="?page=1">Primera</a>
+            <a class="button" href="?page={{ data.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        Pagina {{ data.number }} de {{ data.paginator.num_pages }}.
+
+        {% if data.has_next %}
+            <a class="button" href="?page={{ data.next_page_number }}">Siguiente</a>
+            <a class="button" href="?page={{ data.paginator.num_pages }}">Última</a>
+        {% endif %}
+    </div>
+    <div>
         <a class="button" href="{% url 'home' %}">Volver</a>
     </div>
 </div>
