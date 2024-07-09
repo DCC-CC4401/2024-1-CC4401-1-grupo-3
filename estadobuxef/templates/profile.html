@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} Perfil {% endblock %} 
+{% block css%}
+{% endblock %} 
+{% block content %}
+<div class="content">
+    <div>
+        <h2>Perfil de {{user.username}}</h2>
+    </div>
+    <div class="subcontent">
+        <h2>MIS REPORTES</h2>
+        {% for reporte in reportes %}
+            <div class="container">
+                    <p class="foot">{{reporte.hora}}</p>
+                    <h3>{{reporte.contenido}}</h3>
+                    <p class="foot">{{reporte.lugar.nombre}}</p>
+                    <!-- {% if reporte.foto %}
+                    <p>{{reporte.foto}}</p>
+                    {% endif %} -->
+            </div>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %} 
