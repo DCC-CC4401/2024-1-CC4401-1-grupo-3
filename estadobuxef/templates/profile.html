@@ -1,15 +1,16 @@
 {% extends 'base.html' %} 
 {% load static %}
-{% block title %} Reportes {% endblock %} 
+{% block title %} Perfil {% endblock %} 
 {% block css%}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %} 
 {% block content %}
 <div class="content">
-    <h2>REPORTES</h2>
-    <div class="reports">
-        {% if data %}
-            {% for reporte in data %}
+    <div>
+        <h2>Perfil de {{user.username}}</h2>
+    </div>
+    <div class="subcontent">
+        <h2>MIS REPORTES</h2>
+        {% for reporte in reportes %}
             <div class="container">
                     <p class="foot">{{reporte.hora}}</p>
                     <h3>{{reporte.contenido}}</h3>
@@ -19,11 +20,6 @@
                     {% endif %} -->
             </div>
             {% endfor %}
-        {% endif %}
-    </div>
-    <div>
-        <a class="button" href="{% url 'home' %}">Volver</a>
     </div>
 </div>
-
 {% endblock %} 
