@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} Lugar {% endblock %}
+
+{% block css%}
+
+{% endblock %} 
+
+{% block content %}
+<div>
+    {%if lugar%}
+        <h2>{{ lugar.nombre }}</h2>
+
+        <h2>Descripción: </h2>
+        {% for caract, value in lugar.data.items %}
+            <p> - {{caract}}: {{value}}</p>
+        {% endfor %}
+
+
+    {%endif%}
+</div>
+{% endblock %}
