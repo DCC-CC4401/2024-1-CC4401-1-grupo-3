@@ -55,13 +55,22 @@ def home(request):
     elif request.method == "GET":
         reportes = Reporte.objects.all()
         reportes = reportes.order_by('-hora')
-        if request.user.is_authenticated:
-            # print(request.user)
-            user = User.objects.get(username=request.user.get_username())
-            print(user.has_perm("can_change_status"))
+        permisos = request.user.user_permissions.all()
+        print(f'Username: {request.user.username}, Email: {request.user.email}, Permissions: ')
+        for permiso in permisos:
+            print(f'{permiso.codename}')
+        print(request.user.has_perm('can_change_status')) # La funcion has_perm() funciona mal!
+        user_is_funcionario = request.user.has_module_perms('estadobuxef')  # Usuarios corrientes no tienes niun permiso
         if reportes.count() > 5:
             reportes = reportes[:5]
-        return render(request, "home.html", {'lugares': Lugar.objects.all(), 'reportes': reportes})
+        context = {
+            'lugares': Lugar.objects.all(), 
+            'reportes': reportes,
+            'user_is_funcionario': user_is_funcionario,
+        }
+        return render(request, "home.html", context)
+    class Meta:
+        app_label = 'estadobuxef'
 
 def log_reg(request):
     """
