@@ -1,8 +1,11 @@
+
 from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Lugar, Reporte
+from .models import Lugar, Reporte, UsuarioRegistrado
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
 from django.core.paginator import Paginator
@@ -21,6 +24,7 @@ def update_report(request):
                 reporte.save()
             return HttpResponseRedirect('/')
 
+          
 # Create your views here.   
 def home(request):
     """
@@ -43,8 +47,10 @@ def home(request):
         if form_reporte.is_valid():
             cleaned_data = form_reporte.cleaned_data
             # Reporte.objects.create(**cleaned_data)
-            form_reporte.save()
-            form_reporte = NuevoReporteForm()
+            rep = form_reporte.save(commit=False)
+            rep.usuario = request.user
+            rep.save()
+            rep = NuevoReporteForm()
         return HttpResponseRedirect('/')
     elif request.method == "GET":
         reportes = Reporte.objects.all()
@@ -102,6 +108,7 @@ def log_reg(request):
                 user = register_form.save(commit=False)
                 user.username = user.username.lower()
                 user.save()
+                # UsuarioRegistrado.objects.create(usuario=user,)
                 messages.success(request, 'You have signed up successfully.')
                 login(request, user)
                 return redirect('home')
@@ -123,7 +130,13 @@ def log_reg(request):
 def sign_out(request):
     logout(request)
     messages.success(request,f'You have been logged out.')
-    return redirect('log-reg')        
+    return redirect('log-reg')    
+
+@login_required
+def profile(request):
+    user = request.user
+    reportes = Reporte.objects.filter(usuario=user).order_by('-hora')
+    return render(request, 'profile.html', {'user': user, 'reportes': reportes})    
 
 def reports(request):
     """
