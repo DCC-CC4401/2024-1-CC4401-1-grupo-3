@@ -13,7 +13,12 @@
     {%if lugar%}
         <h2>{{ lugar.nombre }}</h2>
 
-        <p>{{ lugar.data }}</p>
+        <h2>Descripción: </h2>
+        {% for caract, value in lugar.data.items %}
+            <p> - {{caract}}: {{value}}</p>
+        {% endfor %}
+
+  
     {%endif%}
 </div>
 <div class="container">
