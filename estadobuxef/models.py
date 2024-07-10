@@ -86,7 +86,7 @@ class Reporte(models.Model):
         ('R', 'Rechazado'),
         ('P', 'Pendiente'),
     )
-    usuario = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Estudiante, null=True, on_delete=models.CASCADE)
     hora = models.DateTimeField(auto_now_add=True)
     contenido = models.TextField()
     lugar = models.ForeignKey('Lugar', on_delete=models.PROTECT)

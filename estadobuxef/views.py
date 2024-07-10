@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Lugar, Reporte, UsuarioRegistrado
+from .models import Lugar, Reporte, Estudiante
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -48,7 +48,8 @@ def home(request):
             cleaned_data = form_reporte.cleaned_data
             # Reporte.objects.create(**cleaned_data)
             rep = form_reporte.save(commit=False)
-            rep.usuario = request.user
+            estudiante = Estudiante.objects.get(id=request.user.id)
+            rep.usuario = estudiante
             rep.save()
             rep = NuevoReporteForm()
         return HttpResponseRedirect('/')
