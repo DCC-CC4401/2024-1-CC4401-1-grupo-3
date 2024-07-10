@@ -1,4 +1,6 @@
+
 from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Lugar, Reporte, UsuarioRegistrado
@@ -22,6 +24,7 @@ def update_report(request):
                 reporte.save()
             return HttpResponseRedirect('/')
 
+          
 # Create your views here.   
 def home(request):
     """
