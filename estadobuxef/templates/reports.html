@@ -13,7 +13,7 @@
             <div class="container">
                     <p class="foot">{{reporte.hora}}</p>
                     <h2>{{reporte.contenido}}</h2>
-                    <p class="foot">{{reporte.lugar.nombre}}</p>
+                    <p class="foot"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{reporte.lugar.nombre}}</a></p>
                     <!-- {% if reporte.foto %}
                     <p>{{reporte.foto}}</p>
                     {% endif %} -->
