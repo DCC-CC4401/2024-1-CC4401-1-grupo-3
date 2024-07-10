@@ -1,11 +1,25 @@
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Lugar, Reporte
 from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
+from django.core.paginator import Paginator
 import json
+
+def update_report(request):
+    if request.method == "POST":
+        if len(json.loads(request.body)) == 3:
+            request_data = json.loads(request.body)
+            reporte = Reporte.objects.get(pk=request_data['reporteId'])
+            reporte_old_status = request_data['reporteOldStatus']
+            reporte_new_status = request_data['reporteNewStatus']
+            print(reporte_old_status, reporte_new_status, reporte)
+            if reporte_old_status == reporte.estado and reporte_new_status != reporte.estado:
+                reporte.estado = reporte_new_status
+                reporte.save()
+            return HttpResponseRedirect('/')
 
 # Create your views here.
 def home(request):
@@ -128,7 +142,16 @@ def reports(request):
 
     ** Description **
     If the request method is GET, the reports page is rendered with the list
-    of all the reports in the database.
+    of the reports in the database, the reports are going to be shown in sets of 
+    5 with paginated lists.
     """
     if request.method == "GET":
-        return render(request, "reports.html", {'data': Reporte.objects.all()})
+        paginator = Paginator(Reporte.objects.all(), 5)
+        page_number = request.GET.get('page')
+        report_page = paginator.get_page(page_number)
+        return render(request, "reports.html", {'data': report_page})
+
+def lugar(request):
+    nombre = request.GET.get('nombre')  
+    lugar = get_object_or_404(Lugar, nombre=nombre)
+    return render(request, 'lugar.html', {'lugar': lugar})
