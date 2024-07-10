@@ -161,4 +161,5 @@ def reports(request):
 def lugar(request):
     nombre = request.GET.get('nombre')  
     lugar = get_object_or_404(Lugar, nombre=nombre)
-    return render(request, 'lugar.html', {'lugar': lugar})
+    reportes = Reporte.objects.filter(lugar=lugar).all()
+    return render(request, 'lugar.html', {'lugar': lugar, 'reportes': reportes})
