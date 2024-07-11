@@ -109,6 +109,7 @@
     "model": "estadobuxef.reporte",
     "pk": 1,
     "fields": {
+      "usuario": 1,
       "hora": "2024-05-22T17:26:25.938Z",
       "contenido": "Proyector en mal estado",
       "lugar": 1,
@@ -119,6 +120,7 @@
     "model": "estadobuxef.reporte",
     "pk": 2,
     "fields": {
+      "usuario": 1,
       "hora": "2024-05-22T17:26:45.683Z",
       "contenido": "Falta papel higiénico en los baños!!",
       "lugar": 5,
@@ -136,10 +138,10 @@
       "password": "pbkdf2_sha256$720000$U9FtSfbiMzfkw6nrtcoKm4$MhIp+v/h7dTswOHYcSuI8aHAiga/MXUmPhFlCtJIBlk=",
       "last_login": "2024-07-08T20:09:07.603Z",
       "is_superuser": false,
-      "username": "a",
-    "first_name": "",
-      "last_name": "",
-      "email": "a@gmail.com",
+      "username": "jperez",
+      "first_name": "Juan",
+      "last_name": "Perez",
+      "email": "jperez@gmail.com",
       "is_staff": false,
       "is_active": true,
       "date_joined": "2024-07-08T20:09:07.006Z",
@@ -162,7 +164,7 @@
       "is_active": true,
       "date_joined": "2024-07-08T20:51:53.710Z",
       "groups": [],
-      "user_permissions": []
+      "user_permissions": [50]
       }
     }
 ]
