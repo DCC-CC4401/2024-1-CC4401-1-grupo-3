@@ -39,7 +39,10 @@ class FuncionarioManager(BaseUserManager):
         return self.create_user( username, email, password, **extra_fields)
 
 class Funcionario(AbstractBaseUser, PermissionsMixin): 
-    
+
+    class Meta:
+        permissions = [("can_change_status", "Can change status of reports")]
+
     username = TextField(max_length=50, blank=False)
     email = EmailField(null=False, unique=True)
 

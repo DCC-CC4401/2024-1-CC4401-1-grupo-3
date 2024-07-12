@@ -3,8 +3,8 @@ from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Lugar, Reporte, Estudiante
-from django.contrib.auth import login, authenticate, logout
+from .models import Lugar, Reporte, UsuarioRegistrado
+from django.contrib.auth import login, authenticate, logout, get_user
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
@@ -57,11 +57,11 @@ def home(request):
         reportes = Reporte.objects.all()
         reportes = reportes.order_by('-hora')
         permisos = request.user.user_permissions.all()
-        
+
         for permiso in permisos:
             print(f'{permiso.codename}')
         print(request.user.has_perm('can_change_status')) # La funcion has_perm() funciona mal!
-        user_is_funcionario = request.user.has_module_perms('estadobuxef')  # Usuarios corrientes no tienes niun permiso
+        user_is_funcionario = request.user.has_perm('change_report')  # Usuarios corrientes no tienes niun permiso
         if reportes.count() > 5:
             reportes = reportes[:5]
         context = {
@@ -121,7 +121,7 @@ def log_reg(request):
                 # UsuarioRegistrado.objects.create(usuario=user,)
                 messages.success(request, 'You have signed up successfully.')
                 login(request, user)
-                return redirect('home')
+                return redirect('home', )
             else:
                 messages.error(request, 'Invalid registration details')
 
