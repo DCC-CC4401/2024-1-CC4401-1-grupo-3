@@ -57,7 +57,6 @@ def home(request):
         reportes = Reporte.objects.all()
         reportes = reportes.order_by('-hora')
         permisos = request.user.user_permissions.all()
-        print(f'Username: {request.user.username}, Email: {request.user.email}, Permissions: ')
         for permiso in permisos:
             print(f'{permiso.codename}')
         print(request.user.has_perm('can_change_status')) # La funcion has_perm() funciona mal!
