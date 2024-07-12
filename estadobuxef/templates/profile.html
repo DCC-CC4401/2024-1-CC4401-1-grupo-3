@@ -21,5 +21,16 @@
             </div>
             {% endfor %}
     </div>
+    <div class="subcontent">
+        <h2>MIS LUGARES FAVORITOS</h2>
+        {% for lugar in lugares %}
+            <div class="container">
+                    <h3><a href="{% url 'lugar' %}?nombre={{ lugar.nombre }}">{{ lugar.nombre }}</a></h3>
+                    <!-- {% if lugar.foto %}
+                    <p>{{lugar.foto}}</p>
+                    {% endif %} -->
+            </div>
+            {% endfor %}
+    </div>
 </div>
 {% endblock %} 

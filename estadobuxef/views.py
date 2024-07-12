@@ -56,11 +56,15 @@ def home(request):
         reportes = Reporte.objects.all()
         reportes = reportes.order_by('-hora')
         permisos = request.user.user_permissions.all()
-        print(f'Username: {request.user.username}, Email: {request.user.email}, Permissions: ')
+        # print(f'Username: {request.user.username}, Email: {request.user.email}, Permissions: ')
         for permiso in permisos:
             print(f'{permiso.codename}')
         print(request.user.get_all_permissions()) # La funcion has_perm() funciona mal!
-        user_is_funcionario = request.user.has_perm('estadobuxef.change_report')  # Usuarios corrientes no tienes niun permiso
+        try:
+            user_is_funcionario = request.user.funcionario
+        except AttributeError:
+            user_is_funcionario = False
+        # Usuarios corrientes no tienes niun permiso
         if reportes.count() > 5:
             reportes = reportes[:5]
         context = {
@@ -145,7 +149,17 @@ def sign_out(request):
 def profile(request):
     user = request.user
     reportes = Reporte.objects.filter(usuario=user).order_by('-hora')
-    return render(request, 'profile.html', {'user': user, 'reportes': reportes})    
+    lugares = []
+    if user.estudiante:
+        for lugar in user.estudiante.favoritos.all():
+            lugares.append(lugar)
+    return render(request, 'profile.html',
+                      {
+                          'user': user,
+                          'reportes': reportes,
+                          "lugares": lugares
+                      }
+                  )
 
 def reports(request):
     """
