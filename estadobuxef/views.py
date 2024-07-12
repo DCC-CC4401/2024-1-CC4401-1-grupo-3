@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Lugar, Reporte
+from .models import Lugar, Reporte, Categoria
 from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
 
@@ -115,3 +115,8 @@ def reports(request):
     """
     if request.method == "GET":
         return render(request, "reports.html", {'data': Reporte.objects.all()})
+
+
+def categoria(request):
+    categorias = Categoria.objects.prefetch_related('lugares').all()
+    return render(request, 'cat.html', {'categorias': categorias})

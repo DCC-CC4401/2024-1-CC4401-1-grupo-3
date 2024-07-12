@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Lugares por Categoría{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/lugares.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="main-title">Lugares por Categoría</h1>
+    <div class="categories-container">
+        {% for categoria in categorias %}
+            <div class="category">
+                <h2>{{ categoria.nombre }}</h2>
+                {% if categoria.lugares.all %}
+                    <ul>
+                        {% for lugar in categoria.lugares.all %}
+                            <li>{{ lugar.nombre }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No hay lugares en esta categoría.</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
