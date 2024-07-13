@@ -14,9 +14,20 @@
             <div class="container">
                     <p class="foot">{{reporte.hora}}</p>
                     <h3>{{reporte.contenido}}</h3>
-                    <p class="foot"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{reporte.lugar.nombre}}</a></p>
+                    <p class="foot"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></p>
                     <!-- {% if reporte.foto %}
                     <p>{{reporte.foto}}</p>
+                    {% endif %} -->
+            </div>
+            {% endfor %}
+    </div>
+    <div class="subcontent">
+        <h2>MIS LUGARES FAVORITOS</h2>
+        {% for lugar in lugares %}
+            <div class="container">
+                    <h3><a href="{% url 'lugar' %}?nombre={{ lugar.nombre }}">{{ lugar.nombre }}</a></h3>
+                    <!-- {% if lugar.foto %}
+                    <p>{{lugar.foto}}</p>
                     {% endif %} -->
             </div>
             {% endfor %}

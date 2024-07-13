@@ -109,26 +109,29 @@
     "model": "estadobuxef.reporte",
     "pk": 1,
     "fields": {
+      "usuario": 1,
       "hora": "2024-05-22T17:26:25.938Z",
       "contenido": "Proyector en mal estado",
       "lugar": 1,
-      "image": ""
+      "foto": ""
     }
   },
   {
     "model": "estadobuxef.reporte",
     "pk": 2,
     "fields": {
+      "usuario": 1,
       "hora": "2024-05-22T17:26:45.683Z",
       "contenido": "Falta papel higiénico en los baños!!",
       "lugar": 5,
-      "image": ""
+      "foto": ""
     }
   },
   {"model": "auth.permission", "pk": 37, "fields": {"name": "Can add user", "content_type": 10, "codename": "add_funcionario"}},
   {"model": "auth.permission", "pk": 38, "fields": {"name": "Can change user", "content_type": 10, "codename": "change_funcionario"}},
   {"model": "auth.permission", "pk": 39, "fields": {"name": "Can delete user", "content_type": 10, "codename": "delete_funcionario"}},
-  {"model": "auth.permission", "pk": 40, "fields": {"name": "Can view user", "content_type": 10, "codename": "view_funcionario"}},  
+  {"model": "auth.permission", "pk": 40, "fields": {"name": "Can view user", "content_type": 10, "codename": "view_funcionario"}},
+  {"model": "auth.permission", "pk": 50, "fields": {"name": "Can change report", "content_type": 10, "codename": "change_report"}},
   {
     "model": "auth.user",
     "pk": 1,
@@ -136,10 +139,10 @@
       "password": "pbkdf2_sha256$720000$U9FtSfbiMzfkw6nrtcoKm4$MhIp+v/h7dTswOHYcSuI8aHAiga/MXUmPhFlCtJIBlk=",
       "last_login": "2024-07-08T20:09:07.603Z",
       "is_superuser": false,
-      "username": "a",
-    "first_name": "",
-      "last_name": "",
-      "email": "a@gmail.com",
+      "username": "jperez",
+      "first_name": "Juan",
+      "last_name": "Perez",
+      "email": "jperez@gmail.com",
       "is_staff": false,
       "is_active": true,
       "date_joined": "2024-07-08T20:09:07.006Z",
@@ -164,5 +167,20 @@
       "groups": [],
       "user_permissions": []
       }
+    },
+  {
+    "model": "estadobuxef.funcionario",
+    "pk": 1,
+    "fields": {
+      "user_id": 2
     }
+  },
+  {
+    "model": "estadobuxef.estudiante",
+    "pk": 1,
+    "fields": {
+      "user_id": 1,
+      "favoritos": [1,2]
+    }
+  }
 ]
