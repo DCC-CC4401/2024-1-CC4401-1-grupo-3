@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
-from .models import Lugar, Reporte
+from .models import Lugar, Reporte, Categoria
 
 
 def update_report(request):
@@ -194,3 +194,9 @@ def like_place(request):
             user.estudiante.favoritos.add(lugar)
         user.save()
     return HttpResponse('OK')
+
+
+def categoria(request):
+    categorias = Categoria.objects.all()
+    lugares = Lugar.objects.all()
+    return render(request, 'cat.html', {"categorias": categorias, "lugares": lugares})

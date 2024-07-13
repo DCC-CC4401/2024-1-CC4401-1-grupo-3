@@ -14,15 +14,13 @@
         {% for categoria in categorias %}
             <div class="category">
                 <h2>{{ categoria.nombre }}</h2>
-                {% if categoria.lugares.all %}
                     <ul>
-                        {% for lugar in categoria.lugares.all %}
-                            <li>{{ lugar.nombre }}</li>
+                        {% for lugar in lugares.all %}
+                            {% if lugar.categoria == categoria %}
+                            <li><a href="{% url 'lugar' %}?nombre={{  lugar.nombre }}">{{ lugar.nombre }}</a></li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
-                {% else %}
-                    <p>No hay lugares en esta categoría.</p>
-                {% endif %}
             </div>
         {% endfor %}
     </div>
