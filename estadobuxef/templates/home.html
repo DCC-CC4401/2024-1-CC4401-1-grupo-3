@@ -30,7 +30,7 @@
                         <tr>
                             <td class="reporte-lugar"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></td>
                             <td>{{ reporte.contenido }}</td>
-                            <td>{{ reporte.hora|date:"H:i" }}</td>
+                                <td>{{ reporte.hora|date:"H:i" }}</td>
                             <td class="reporte-estado">{{ reporte.estado }}</td>
                             {% if user_is_funcionario %}
                                 <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
