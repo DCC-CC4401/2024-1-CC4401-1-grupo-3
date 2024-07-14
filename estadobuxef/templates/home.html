@@ -4,6 +4,7 @@
 
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cat.css' %}">
 {% endblock %}
 
 {% block javascript %}
@@ -72,6 +73,23 @@
                 {% endif %}
             </div>
         </div>
+    <div  style="margin: 21px 0; text-align: center">
+    <h2 class="reports-title" style="margin: 15px 0">LUGARES</h2>
+    <div class="categories-container">
+        {% for categoria in categorias %}
+            <div class="category">
+                <h2>{{ categoria.nombre }}</h2>
+                    <ul>
+                        {% for lugar in lugares.all %}
+                            {% if lugar.categoria == categoria %}
+                            <li><a href="{% url 'lugar' %}?nombre={{  lugar.nombre }}">{{ lugar.nombre }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
     </div>
     <script>
         function myFunction() {
