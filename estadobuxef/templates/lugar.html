@@ -1,0 +1,45 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} Lugar {% endblock %}
+
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %} 
+
+{% block content %}
+<div>
+    {%if lugar%}
+        <h2>{{ lugar.nombre }}</h2>
+
+        <h2>Descripción: </h2>
+        {% for caract, value in lugar.data.items %}
+            <p> - {{caract}}: {{value}}</p>
+        {% endfor %}
+
+  
+    {%endif%}
+</div>
+<div class="container">
+    <h2 class="reports-title">REPORTES</h2>
+    <table class="table">
+        <tr>
+            <th>Suceso</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+        {% if reportes %}
+            {% for reporte in reportes %}
+                <tr>
+                    <td>{{ reporte.contenido }}</td>
+                    <td>{{ reporte.hora|date:"H:i" }}</td>
+                    <td class="reporte-estado">{{ reporte.estado }}</td>
+                    <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+</div>
+{% endblock %}

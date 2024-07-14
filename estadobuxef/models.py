@@ -1,5 +1,6 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission, AbstractUser, AbstractBaseUser, PermissionsMixin, BaseUserManager, Group
 from django.db import models
+from django.db.models import TextField, EmailField
 
 """
 ** Models **
@@ -20,8 +21,52 @@ class UsuarioRegistrado(User):
 class Estudiante(UsuarioRegistrado):
     pass
 
-class Funcionario(UsuarioRegistrado):
-    pass
+class FuncionarioManager(BaseUserManager):
+    def create_user(self, username, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        
+        user = self.model(email=email, username=username, **extra_fields)
+        email = self.normalize_email(email)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        return self.create_user( username, email, password, **extra_fields)
+
+class Funcionario(AbstractBaseUser, PermissionsMixin): 
+
+    class Meta:
+        permissions = [("can_change_status", "Can change status of reports")]
+
+    username = TextField(max_length=50, blank=False)
+    email = EmailField(null=False, unique=True)
+
+    groups = models.ManyToManyField(
+        Group,
+        related_name='funcionario_set',
+        blank=True,
+        help_text='The groups this user belongs to.',
+        verbose_name='groups',
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name='funcionario_permissions_set',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        verbose_name='user permissions',
+    )
+
+    objects = FuncionarioManager()
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
+    
 
 """
 ** Models **
@@ -44,6 +89,7 @@ class Reporte(models.Model):
         ('R', 'Rechazado'),
         ('P', 'Pendiente'),
     )
+    usuario = models.ForeignKey(Estudiante, null=True, on_delete=models.CASCADE)
     hora = models.DateTimeField(auto_now_add=True)
     contenido = models.TextField()
     lugar = models.ForeignKey('Lugar', on_delete=models.PROTECT)
@@ -55,6 +101,7 @@ class Lugar(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT, default='Sin categoria')
     nombre = models.CharField('Nombre', max_length=50, null=False)
     data = models.JSONField(default=dict)
+    #imagen = models.FileField(upload_to='uploads/lugar/', blank=True, null=True)
 
 
 class Categoria(models.Model):
