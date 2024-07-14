@@ -67,7 +67,7 @@ def home(request):
         # Usuarios corrientes no tienes niun permiso
         if reportes.count() > 5:
             reportes = reportes[:5]
-        context = {'lugares': Lugar.objects.all(), 'reportes': reportes, 'user_is_funcionario': user_is_funcionario, }
+        context = {'lugares': Lugar.objects.all(), 'reportes': reportes, 'user_is_funcionario': user_is_funcionario, "categorias":Categoria.objects.all()}
         return render(request, "home.html", context)
 
     class Meta:

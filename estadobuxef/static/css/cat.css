@@ -25,16 +25,18 @@
     background-color: #e68686;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 15px;
+    /*padding: 15px;*/
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     width: 30%;
+    height: fit-content     ;
 }
 
 .category h2 {
     background-color: #a14851;
     color: #461220;
     font-size: 20px;
-    margin: -15px -15px 10px -15px;
+    /*margin: -15px -15px 10px -15px;*/
+    margin: 0;
     padding: 10px;
     border-radius: 8px 8px 0 0;
 }
@@ -42,10 +44,12 @@
 .category ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .category li {
-    padding: 8px;
+    padding: 8px 8px;
+    text-align: left;
     border-bottom: 1px solid #eee;
 }
 

@@ -3,21 +3,24 @@
     "model": "estadobuxef.Categoria",
     "pk": 1,
     "fields": {
-      "nombre": "Sala"
+      "nombre": "Sala",
+      "foto": "IMG_20240711_152845.jpg"
     }
   },
   {
     "model": "estadobuxef.Categoria",
     "pk": 2,
     "fields": {
-      "nombre": "Baño"
+      "nombre": "Baño",
+      "foto":"IMG_20240711_151411.jpg"
     }
   },
   {
     "model": "estadobuxef.Categoria",
     "pk": 3,
     "fields": {
-      "nombre": "Comedor"
+      "nombre": "Comedor",
+      "foto": "IMG_20240711_153138.jpg"
     }
   },
   {
@@ -131,6 +134,18 @@
       "contenido": "Falta papel higiénico en los baños!!",
       "lugar": 5,
       "foto": ""
+    }
+  },
+  {
+    "model": "estadobuxef.reporte",
+    "pk": 3,
+    "fields": {
+      "usuario": 1,
+      "hora": "2024-06-10T17:26:45.683Z",
+      "contenido": "Falta papel higiénico en los baños!!",
+      "lugar": 5,
+      "foto": "",
+      "estado": "R"
     }
   },
   {"model": "auth.permission", "pk": 37, "fields": {"name": "Can add user", "content_type": 10, "codename": "add_funcionario"}},
