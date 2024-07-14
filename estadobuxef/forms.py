@@ -11,8 +11,7 @@ class LoginForm(forms.Form):
 
 class RegisterForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
-        #model=Funcionario
-        model=User
+        model = User
         fields = ['username','email','password1','password2'] 
 
 
