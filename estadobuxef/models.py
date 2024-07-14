@@ -97,14 +97,9 @@ class Reporte(models.Model):
 class Lugar(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT, default='Sin categoria')
     nombre = models.CharField('Nombre', max_length=50, null=False)
-<<<<<<< HEAD
-    data = models.JSONField(default=dict)
-    imagen = models.FileField(upload_to='images/', max_length=255, blank=True, null=True)
-=======
     data = models.JSONField(
         default=dict)  # imagen = models.FileField(upload_to='uploads/lugar/', blank=True, null=True)
     foto = models.ImageField(upload_to='uploads/lugar/', blank=True, null=True)
->>>>>>> 1da4965671a9a1ec1e1f2483296c790ce0821cdd
 
 
 class Categoria(models.Model):

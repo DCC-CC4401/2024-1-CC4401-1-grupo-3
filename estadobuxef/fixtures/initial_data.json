@@ -33,7 +33,7 @@
         "Internet": "Buena calidad",
         "Baños": "Cercanos a la sala, a la vuelta de la esquina"
       },
-      "imagen": "images/puertaF10.jpg"
+      "foto": "images/puertaF10.jpg"
     }
   },
   {
@@ -49,7 +49,7 @@
         "Internet": "Buena calidad",
         "Baños": "Tiene el baño de las salas Q20-1-2 cerca"
       },
-      "imagen": "images/puertaQP.jpg"
+      "foto": "images/puertaQP.jpg"
     }
   },
   {
@@ -65,7 +65,7 @@
         "Internet": "Puede a veces la calidad de la señal no ser la mejor la estar en el -1 y además por lo grande de la sala y posibles interferencias",
         "Baños": "Relativamente cerca, a unos 2-3 minutos caminando"
       },
-      "imagen": ""
+      "foto": ""
     }
   },
   {
@@ -80,7 +80,7 @@
         "Microondas": "2, se genera congestion en horarios de almuerzo (13 - 14hr aprox)",
         "Ambiente": "Agradable, el ruido no es excesivo para estudiar y al mismo tiempo no es silencioso como para no poder hablar"
       },
-      "imagen": "images/logoCafeta.jpg"
+      "foto": "images/logoCafeta.jpg"
     }
   },
   {
@@ -94,7 +94,7 @@
         "Cubículos": "5 todos con pestillo (1 para personas con movilidad reducida), tamaño medio justo, no hay mucho lugar para moverse dentro, poseen confort y basurero dentro, incluso una percha para dejar polerones, bolsos o mochilas",
         "Utensilios": "Hay papel higiénico dentro y fuera de los cubículos, hay 3 dispensadores de jabón (aun que no siempre estan relleno) y hay una maquina para secarse las manos con aire frio, hay papel para secarse las manos, basurero fuera de los cubículos, 4 lavamanos"
       },
-      "imagen": "images/banoDamasHallSur.jpg"
+      "foto": "images/banoDamasHallSur.jpg"
     }
   },
   {
@@ -108,7 +108,7 @@
         "Cubículos": "2, con puertas y chapas, tamaño mas amplio, poseen confort y basurero, no poseen perchas, hay espacio debajo de la puerta para saber si esta ocupado",
         "Utensilios": "Hay confort solo dentro de los baños, afuera hay 2 dispensadores de jabón, 2 lavamanos, 1 basurero y papel para secarse las manos"
       },
-      "imagen": "images/espejoBanoDamas.jpg"
+      "foto": "images/espejoBanoDamas.jpg"
     }
   },
   {
