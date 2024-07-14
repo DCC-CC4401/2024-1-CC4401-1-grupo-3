@@ -101,7 +101,7 @@ class Lugar(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.PROTECT, default='Sin categoria')
     nombre = models.CharField('Nombre', max_length=50, null=False)
     data = models.JSONField(default=dict)
-    #imagen = models.FileField(upload_to='uploads/lugar/', blank=True, null=True)
+    imagen = models.FileField(upload_to='images/', max_length=255, blank=True, null=True)
 
 
 class Categoria(models.Model):

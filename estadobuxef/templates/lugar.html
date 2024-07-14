@@ -28,7 +28,9 @@
             <th>Suceso</th>
             <th>Hora</th>
             <th>Estado</th>
-            <th></th>
+            {% if user_is_funcionario %}
+                <th></th>
+            {% endif %}
         </tr>
         {% if reportes %}
             {% for reporte in reportes %}
@@ -36,7 +38,9 @@
                     <td>{{ reporte.contenido }}</td>
                     <td>{{ reporte.hora|date:"H:i" }}</td>
                     <td class="reporte-estado">{{ reporte.estado }}</td>
-                    <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
+                    {% if user_is_funcionario %}
+                        <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         {% endif %}
