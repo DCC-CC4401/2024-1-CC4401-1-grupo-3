@@ -78,6 +78,7 @@
     <div class="categories-container">
         {% for categoria in categorias %}
             <div class="category">
+                <img src="{% static 'images/categories' %}/{{ categoria.foto }}">
                 <h2>{{ categoria.nombre }}</h2>
                     <ul>
                         {% for lugar in lugares.all %}
