@@ -2,24 +2,35 @@
 {% load static %}
 {% block title %} Perfil {% endblock %} 
 {% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock %} 
 {% block content %}
 <div class="content">
     <div>
         <h2>Perfil de {{user.username}}</h2>
     </div>
-    <div class="subcontent">
-        <h2>MIS REPORTES</h2>
-        {% for reporte in reportes %}
-            <div class="container">
-                    <p class="foot">{{reporte.hora}}</p>
-                    <h3>{{reporte.contenido}}</h3>
-                    <p class="foot"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></p>
-                    <!-- {% if reporte.foto %}
-                    <p>{{reporte.foto}}</p>
-                    {% endif %} -->
-            </div>
-            {% endfor %}
+    <div class="container">
+        <h2 class="reports-title">MIS REPORTES</h2>
+        <table class="table">
+            <tr>
+                <th>Lugar</th>
+                <th>Suceso</th>
+                <th>Hora</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+            {% if reportes %}
+                {% for reporte in reportes %}
+                    <tr>
+                        <td class="reporte-lugar"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></td>
+                        <td>{{ reporte.contenido }}</td>
+                        <td>{{ reporte.hora|date:"H:i" }}</td>
+                        <td class="reporte-estado">{{ reporte.estado }}</td>
+                        <td class="edit-btn"><span class="material-symbols-outlined" style="display: none;"></span></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
     </div>
     <div class="subcontent">
         <h2>MIS LUGARES FAVORITOS</h2>

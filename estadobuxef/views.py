@@ -48,7 +48,8 @@ def home(request):
             cleaned_data = form_reporte.cleaned_data
             # Reporte.objects.create(**cleaned_data)
             rep = form_reporte.save(commit=False)
-            rep.usuario = request.user
+            estudiante = Estudiante.objects.get(id=request.user.id)
+            rep.usuario = estudiante
             rep.save()
             rep = NuevoReporteForm()
         return HttpResponseRedirect('/')
@@ -56,7 +57,6 @@ def home(request):
         reportes = Reporte.objects.all()
         reportes = reportes.order_by('-hora')
         permisos = request.user.user_permissions.all()
-        # print(f'Username: {request.user.username}, Email: {request.user.email}, Permissions: ')
         for permiso in permisos:
             print(f'{permiso.codename}')
         print(request.user.get_all_permissions())  # La funcion has_perm() funciona mal!
