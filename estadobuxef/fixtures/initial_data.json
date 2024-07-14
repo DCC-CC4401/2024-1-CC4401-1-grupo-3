@@ -127,6 +127,18 @@
       "foto": ""
     }
   },
+  {
+    "model": "estadobuxef.reporte",
+    "pk": 3,
+    "fields": {
+      "usuario": 1,
+      "hora": "2024-06-10T17:26:45.683Z",
+      "contenido": "Falta papel higiénico en los baños!!",
+      "lugar": 5,
+      "foto": "",
+      "estado": "R"
+    }
+  },
   {"model": "auth.permission", "pk": 37, "fields": {"name": "Can add user", "content_type": 10, "codename": "add_funcionario"}},
   {"model": "auth.permission", "pk": 38, "fields": {"name": "Can change user", "content_type": 10, "codename": "change_funcionario"}},
   {"model": "auth.permission", "pk": 39, "fields": {"name": "Can delete user", "content_type": 10, "codename": "delete_funcionario"}},

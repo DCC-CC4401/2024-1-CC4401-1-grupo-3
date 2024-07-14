@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
-from .models import Lugar, Reporte, Categoria
+from .models import Lugar, Reporte, Categoria, Estudiante
 
 
 def update_report(request):
@@ -67,7 +67,7 @@ def home(request):
         # Usuarios corrientes no tienes niun permiso
         if reportes.count() > 5:
             reportes = reportes[:5]
-        context = {'lugares': Lugar.objects.all(), 'reportes': reportes, 'user_is_funcionario': user_is_funcionario, }
+        context = {'lugares': Lugar.objects.all(), 'reportes': reportes, 'user_is_funcionario': user_is_funcionario, "categorias":Categoria.objects.all()}
         return render(request, "home.html", context)
 
     class Meta:
@@ -119,6 +119,8 @@ def log_reg(request):
                 user = register_form.save(commit=False)
                 user.username = user.username.lower()
                 user.save()
+                estudiante = Estudiante(user_id=user.id)
+                estudiante.save()
                 # UsuarioRegistrado.objects.create(usuario=user,)
                 messages.success(request, 'You have signed up successfully.')
                 login(request, user)
