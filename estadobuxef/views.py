@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
-from .models import Lugar, Reporte, Categoria
+from .models import Lugar, Reporte, Categoria, Estudiante
 
 
 def update_report(request):
@@ -119,6 +119,8 @@ def log_reg(request):
                 user = register_form.save(commit=False)
                 user.username = user.username.lower()
                 user.save()
+                estudiante = Estudiante(user_id=user.id)
+                estudiante.save()
                 # UsuarioRegistrado.objects.create(usuario=user,)
                 messages.success(request, 'You have signed up successfully.')
                 login(request, user)
