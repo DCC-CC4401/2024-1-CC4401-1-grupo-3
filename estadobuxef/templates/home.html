@@ -14,14 +14,14 @@
 
 {% block content %}
     <div>
-        <div class="container">
-            <h2 class="reports-title">ÚLTIMOS REPORTES</h2>
-            <table class="table">
-                <tr>
-                    <th>Lugar</th>
-                    <th>Suceso</th>
-                    <th>Hora</th>
-                    <th>Estado</th>
+        <div class="container" >
+            <h2 class="reports-title" style="color: #040430">ÚLTIMOS REPORTES</h2>
+            <table class="table" >
+                <tr >
+                    <th style="color: #040430">Lugar</th>
+                    <th style="color: #040430">Suceso</th>
+                    <th style="color: #040430">Hora</th>
+                    <th style="color: #040430">Estado</th>
                     {% if user_is_funcionario %}
                     <th></th>
                     {% endif %}
@@ -29,18 +29,18 @@
                 {% if reportes %}
                     {% for reporte in reportes %}
                         <tr>
-                            <td class="reporte-lugar"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></td>
-                            <td>{{ reporte.contenido }}</td>
-                                <td>{{ reporte.hora|date:"H:i" }}</td>
-                            <td class="reporte-estado">{{ reporte.estado }}</td>
+                            <td class="reporte-lugar" style="color: #040430"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></td>
+                            <td style="color: #040430">{{ reporte.contenido }}</td>
+                            <td style="color: #040430">{{ reporte.hora|date:"H:i" }}</td>
+                            <td class="reporte-estado" style="color: #040430">{{ reporte.estado }}</td>
                             {% if user_is_funcionario %}
-                                <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
+                                <td class="edit-btn" style="color: #040430"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
                             {% endif %}
                         </tr>
                     {% endfor %}
                 {% endif %}
             </table>
-            <a class="not-btn" href="{% url 'reports' %}">Ver más</a>
+            <a class="not-btn" href="{% url 'reports' %}" style="color: #040430">Ver más</a>
         </div>
 
         <div>
@@ -74,16 +74,16 @@
             </div>
         </div>
     <div  style="margin: 21px 0; text-align: center">
-    <h2 class="reports-title" style="margin: 15px 0">LUGARES</h2>
+    <h2 class="reports-title" style="color: #040430">LUGARES</h2>
     <div class="categories-container">
         {% for categoria in categorias %}
             <div class="category">
                 <img src="{% static 'images/categories' %}/{{ categoria.foto }}">
-                <h2>{{ categoria.nombre }}</h2>
+                <h2 style="color: #040430">{{ categoria.nombre }}</h2>
                     <ul>
                         {% for lugar in lugares.all %}
                             {% if lugar.categoria == categoria %}
-                            <li><a href="{% url 'lugar' %}?nombre={{  lugar.nombre }}">{{ lugar.nombre }}</a></li>
+                            <li style="color: #040430"><a href="{% url 'lugar' %}?nombre={{  lugar.nombre }}">{{ lugar.nombre }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ul>

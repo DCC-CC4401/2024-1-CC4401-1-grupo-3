@@ -1,3 +1,11 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #040430;
+    --boton: #C6AFBF;
+    --register: #F2C6C2;
+    --login: #A8C3FD;
+}
+
 .sign-container {
     width: 600px;
     position: relative;
@@ -6,7 +14,7 @@
 .tab-container {
     display: flex;
     justify-content:flex-end;
-    color: #FCB9B2;
+    color: var(--text-color);
     position: relative;
     right: 30px;
 }
@@ -16,7 +24,7 @@
     text-align: center;
     padding: 10px;
     cursor: pointer;
-    background-color: #8C2F39;
+    background-color: var(--register);
     border-bottom: none;
     border-radius: 10px 10px 0 0;
     transition: background-color 0.3s;
@@ -25,15 +33,15 @@
 }
 
 .tab.active {
-    background-color: #461220;
-    color: #FCB9B2;
+    background-color: var(--login);
+    color: var(--text-color);
 }
 
 .form-container {
-    color: #B23A48;
+    color: var(--text-color);
     border-radius: 10px 10px 10px 10px;
     padding: 20px;
-    background-color: #461220;
+    background-color: var(--login);
 }
 
 form p {
@@ -53,8 +61,8 @@ form.active {
 }
 
 input[type="submit"] {
-    background-color: #B23A48;
-    color: #461220;
+    background-color: var(--boton);
+    color: var(--login);
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -65,12 +73,12 @@ input[type="submit"] {
     margin: 8px;
     font: 1rem 'Inter', sans-serif;
 }
-
+/* 
 input[type="submit"]:hover {
-    background-color: #6b7fd7;
+    background-color: var(--text-color);
 }
 
-/* .form-input {
+.form-input {
     display: inline-block;
     justify-content: space-between;
 } */
@@ -94,7 +102,7 @@ input {
 }
 
 .error {
-    color: #edbaba;
+    color: var(--text-color);
     font-size: smaller;
     margin-bottom: 1em; 
 }

@@ -1,15 +1,11 @@
 :root {
-    --background-color: #FED0BB;
-    --text-color: #461220;
-    --table-border: #ddd;
-    --table-hover-bg: #e0e0e0;
-    --button-bg: #8C2F39;
-    --button-hover-bg: #742636;
-    --form-bg: #fcb9b2;
-    --input-bg: #b36063;
-    --input-border: #933043;
+    --background-color: #ffffff;
+    --text-color: #040430;
+    --table-hover-bg: #C6AFBF;
+    --button-bg: #040430;
+    --form-bg: #A8C3FD;
     --input-text: #f0eded;
-    --navbar-bg: #B23A48;
+    --navbar-bg: #F2C6C2;
 }
 
 body {
@@ -59,9 +55,9 @@ button {
     font: 1rem 'Fira Sans', sans-serif;
     color: white;
     font-weight: 600;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: var(--button-bg);
     background-color: var(--button-bg);
-    border: 1px solid #863038;
+    border: 1px solid var(--button-bg);
     border-radius: 5px;
     padding: 9px;
     cursor: pointer;
@@ -70,7 +66,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--button-hover-bg);
+    background-color: var(--button);
 }
 
 table {
@@ -87,11 +83,11 @@ th, td {
 }
 
 th {
-    background-color: #a14851;
+    background-color: var(--table-hover-bg);
 }
 
 tr {
-    background-color: #e68686;
+    background-color: var(--form-bg);
 }
 
 tr:hover {
@@ -102,7 +98,7 @@ form {
     background-color: var(--form-bg);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    box-shadow: var(--text-color);
     margin-top: 20px;
 }
 
@@ -111,8 +107,8 @@ select, textarea, input[type="text"] {
     padding: 8px;
     margin-bottom: 20px;
     border-radius: 4px;
-    border: 3px solid var(--input-border);
-    background-color: var(--input-bg);
+    border: 3px solid var(--table-hover-bg);
+    background-color: var(--table-hover-bg);
     color: var(--input-text);
 }
 
@@ -123,7 +119,7 @@ label {
 }
 
 .reglog-btn {
-    color: #FFFFFF;
+    color: var(--background-color);
     background-color: var(--button-bg);
     padding: 10px 15px;
     text-decoration: none;
@@ -133,7 +129,7 @@ label {
 }
 
 .reglog-btn:hover {
-    background-color: #742636;
+    background-color: var(--form-bg);
 }
 
 #contenido {
@@ -141,8 +137,8 @@ label {
     height: 50px;
     padding: 8px;
     border-radius: 4px;
-    border: 3px solid var(--input-border);
-    background-color: var(--input-bg);
+    border: 3px solid var(--table-hover-bg);
+    background-color: var(--text-color);
     color: var(--input-text);
 }
 
@@ -155,6 +151,12 @@ label {
 .add-report {
     display: none;
 }
+
+.report-title {
+    margin-top: 20px;
+    background-color: #C6AFBF;
+}
+
 
 .show {
     display: flex;

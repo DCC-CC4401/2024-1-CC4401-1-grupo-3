@@ -1,8 +1,7 @@
 :root {
-  --background-color: #FED0BB;
-  --text-color: #461220;
-  --pink-color: #FC2865;
-  --navbar-bg: #B23A48;
+  --background-color: #ffffff;
+  --text-color: #040430;
+  --navbar-bg: #F2C6C2;
 }
 
 body {
@@ -43,7 +42,7 @@ body {
 }
 
 .navbar a:hover {
-  color: #e593aa;
+  color: var(--navbar-bg);
 }
 
 .main-container {
@@ -58,7 +57,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #FCB9B2;
+  background-color: var(--background-color);
   border-radius: .25em;
   padding: 25px;
   margin: 15px;
@@ -70,15 +69,15 @@ body {
 }
 
 .container h3, .reports-title {
-  margin: 0;
+  margin: 15px 0;
 }
 
 .button {
-  color: white;
+  color: var(--background-color);
   font: 1rem 'Inter', sans-serif;
   /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); */
-  background-color: #8C2F39;
-  border: 1px solid #863038;
+  background-color: var(--text-color);
+  border: 1px solid var(--text-color);
   border-radius: 5px;
   padding: 9px;
   cursor: pointer;
@@ -100,6 +99,6 @@ body {
 }
 
 .subcontent {
-  background-color: #dd808b;
+  background-color: var(--navbar-bg);
   border-radius: .25em;
 }
