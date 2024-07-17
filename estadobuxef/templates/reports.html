@@ -7,6 +7,17 @@
 {% block content %}
 <div class="content">
     <h2>REPORTES</h2>
+    <div>
+        {% if filtros %}
+            {% for r in filtros %}
+                {% if r == lugar_filtro %}
+                    <a class="button" href="?{% if data.has_other_pages %}page=1{% endif %}" style="background-color: #F2C6C2; color:black;">{{ r }}</a>
+                {% else %}
+                    <a class="button" href="?lugar={{ r }}{% if data.has_other_pages %}&page=1{% endif %}">{{ r }}</a>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
     <div class="reports">
         {% if data %}
             {% for reporte in data %}
