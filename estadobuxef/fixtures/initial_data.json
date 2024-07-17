@@ -3,21 +3,24 @@
     "model": "estadobuxef.Categoria",
     "pk": 1,
     "fields": {
-      "nombre": "Sala"
+      "nombre": "Sala",
+      "foto": "IMG_20240711_152845.jpg"
     }
   },
   {
     "model": "estadobuxef.Categoria",
     "pk": 2,
     "fields": {
-      "nombre": "Baño"
+      "nombre": "Baño",
+      "foto":"IMG_20240711_151411.jpg"
     }
   },
   {
     "model": "estadobuxef.Categoria",
     "pk": 3,
     "fields": {
-      "nombre": "Comedor"
+      "nombre": "Comedor",
+      "foto": "IMG_20240711_153138.jpg"
     }
   },
   {
@@ -32,7 +35,8 @@
         "Pizarra": "4 de tiza y 2 de plumon, pizarras con rieles",
         "Internet": "Buena calidad",
         "Baños": "Cercanos a la sala, a la vuelta de la esquina"
-      }
+      },
+      "foto": "images/puertaF10.jpg"
     }
   },
   {
@@ -47,7 +51,8 @@
         "Pizarra": "4 de tiza con rieles y 2 de plumon detrás, mala visibilidad en toda una mitad si se prende el proyector",
         "Internet": "Buena calidad",
         "Baños": "Tiene el baño de las salas Q20-1-2 cerca"
-      }
+      },
+      "foto": "images/puertaQP.jpg"
     }
   },
   {
@@ -62,7 +67,8 @@
         "Pizarra": "4 de tiza con rieles y 2 de plumon detrás, ningún desperfecto aca",
         "Internet": "Puede a veces la calidad de la señal no ser la mejor la estar en el -1 y además por lo grande de la sala y posibles interferencias",
         "Baños": "Relativamente cerca, a unos 2-3 minutos caminando"
-      }
+      },
+      "foto": ""
     }
   },
   {
@@ -76,7 +82,8 @@
         "Condiciones": "Aire acondicionado acorde al clima, TV con musica y noticias, Tienda para comprar cositas para comer y beber",
         "Microondas": "2, se genera congestion en horarios de almuerzo (13 - 14hr aprox)",
         "Ambiente": "Agradable, el ruido no es excesivo para estudiar y al mismo tiempo no es silencioso como para no poder hablar"
-      }
+      },
+      "foto": "images/logoCafeta.jpg"
     }
   },
   {
@@ -89,7 +96,8 @@
         "Espejos": "1 de gran tamaño, pueden verse varias personas a la vez, con buena iluminación, entorpece el paso de la gente que quiere ir a los cubiculos por el angosto pasillo",
         "Cubículos": "5 todos con pestillo (1 para personas con movilidad reducida), tamaño medio justo, no hay mucho lugar para moverse dentro, poseen confort y basurero dentro, incluso una percha para dejar polerones, bolsos o mochilas",
         "Utensilios": "Hay papel higiénico dentro y fuera de los cubículos, hay 3 dispensadores de jabón (aun que no siempre estan relleno) y hay una maquina para secarse las manos con aire frio, hay papel para secarse las manos, basurero fuera de los cubículos, 4 lavamanos"
-      }
+      },
+      "foto": "images/banoDamasHallSur.jpg"
     }
   },
   {
@@ -102,27 +110,98 @@
         "Espejos": "1 de tamaño medio, pueden verse aprox 3 personas a la vez, con buena iluminación, no entorpece el transito del baño",
         "Cubículos": "2, con puertas y chapas, tamaño mas amplio, poseen confort y basurero, no poseen perchas, hay espacio debajo de la puerta para saber si esta ocupado",
         "Utensilios": "Hay confort solo dentro de los baños, afuera hay 2 dispensadores de jabón, 2 lavamanos, 1 basurero y papel para secarse las manos"
-      }
+      },
+      "foto": "images/espejoBanoDamas.jpg"
     }
   },
   {
     "model": "estadobuxef.reporte",
     "pk": 1,
     "fields": {
+      "usuario": 1,
       "hora": "2024-05-22T17:26:25.938Z",
       "contenido": "Proyector en mal estado",
       "lugar": 1,
-      "image": ""
+      "foto": ""
     }
   },
   {
     "model": "estadobuxef.reporte",
     "pk": 2,
     "fields": {
+      "usuario": 1,
       "hora": "2024-05-22T17:26:45.683Z",
       "contenido": "Falta papel higiénico en los baños!!",
       "lugar": 5,
-      "image": ""
+      "foto": ""
+    }
+  },
+  {
+    "model": "estadobuxef.reporte",
+    "pk": 3,
+    "fields": {
+      "usuario": 1,
+      "hora": "2024-06-10T17:26:45.683Z",
+      "contenido": "Falta papel higiénico en los baños!!",
+      "lugar": 5,
+      "foto": "",
+      "estado": "R"
+    }
+  },
+  {"model": "auth.permission", "pk": 37, "fields": {"name": "Can add user", "content_type": 10, "codename": "add_funcionario"}},
+  {"model": "auth.permission", "pk": 38, "fields": {"name": "Can change user", "content_type": 10, "codename": "change_funcionario"}},
+  {"model": "auth.permission", "pk": 39, "fields": {"name": "Can delete user", "content_type": 10, "codename": "delete_funcionario"}},
+  {"model": "auth.permission", "pk": 40, "fields": {"name": "Can view user", "content_type": 10, "codename": "view_funcionario"}},
+  {"model": "auth.permission", "pk": 50, "fields": {"name": "Can change report", "content_type": 10, "codename": "change_report"}},
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$U9FtSfbiMzfkw6nrtcoKm4$MhIp+v/h7dTswOHYcSuI8aHAiga/MXUmPhFlCtJIBlk=",
+      "last_login": "2024-07-08T20:09:07.603Z",
+      "is_superuser": false,
+      "username": "jperez",
+      "first_name": "Juan",
+      "last_name": "Perez",
+      "email": "jperez@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-08T20:09:07.006Z",
+      "groups": [],
+      "user_permissions": []
+      }
+    },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$5KtZ95HZligTe5eoRJM9RI$f9+9STRCcYFpbOv1yLdOPoXpAvm3QMccb9wxDzcbpO4=",
+      "last_login": "2024-07-08T20:51:54.346Z",
+      "is_superuser": false,
+      "username": "afuncionario",
+      "first_name": "",
+      "last_name": "",
+      "email": "afun@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-08T20:51:53.710Z",
+      "groups": [],
+      "user_permissions": []
+      }
+    },
+  {
+    "model": "estadobuxef.funcionario",
+    "pk": 1,
+    "fields": {
+      "user_id": 2
+    }
+  },
+  {
+    "model": "estadobuxef.estudiante",
+    "pk": 1,
+    "fields": {
+      "user_id": 1,
+      "favoritos": [1,2]
     }
   }
 ]

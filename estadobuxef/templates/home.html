@@ -4,6 +4,7 @@
 
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cat.css' %}">
 {% endblock %}
 
 {% block javascript %}
@@ -14,23 +15,27 @@
 {% block content %}
     <div>
         <div class="container">
-            <h2>ÚLTIMOS REPORTES</h2>
+            <h2 class="reports-title">ÚLTIMOS REPORTES</h2>
             <table class="table">
                 <tr>
                     <th>Lugar</th>
                     <th>Suceso</th>
                     <th>Hora</th>
                     <th>Estado</th>
+                    {% if user_is_funcionario %}
                     <th></th>
+                    {% endif %}
                 </tr>
                 {% if reportes %}
                     {% for reporte in reportes %}
                         <tr>
-                            <td>{{ reporte.lugar.nombre }}</td>
+                            <td class="reporte-lugar"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></td>
                             <td>{{ reporte.contenido }}</td>
-                            <td>{{ reporte.hora|date:"H:i" }}</td>
+                                <td>{{ reporte.hora|date:"H:i" }}</td>
                             <td class="reporte-estado">{{ reporte.estado }}</td>
-                            <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
+                            {% if user_is_funcionario %}
+                                <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 {% endif %}
@@ -68,6 +73,23 @@
                 {% endif %}
             </div>
         </div>
+    <div  style="margin: 21px 0; text-align: center">
+    <h2 class="reports-title" style="margin: 15px 0">LUGARES</h2>
+    <div class="categories-container">
+        {% for categoria in categorias %}
+            <div class="category">
+                <h2>{{ categoria.nombre }}</h2>
+                    <ul>
+                        {% for lugar in lugares.all %}
+                            {% if lugar.categoria == categoria %}
+                            <li><a href="{% url 'lugar' %}?nombre={{  lugar.nombre }}">{{ lugar.nombre }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
     </div>
     <script>
         function myFunction() {
@@ -76,4 +98,3 @@
         }
     </script>
 {% endblock %}
-

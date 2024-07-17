@@ -42,6 +42,10 @@ body {
   font-size: 1rem;
 }
 
+.navbar a:hover {
+  color: #e593aa;
+}
+
 .main-container {
   display: flex;
   flex-flow: wrap;
@@ -65,7 +69,7 @@ body {
   text-align: right;
 }
 
-.container h2 {
+.container h3, .reports-title {
   margin: 0;
 }
 
@@ -87,4 +91,15 @@ body {
   flex-wrap: wrap;
   margin-bottom: 20px;
   justify-content: center;
+}
+
+.content, .subcontent {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+}
+
+.subcontent {
+  background-color: #dd808b;
+  border-radius: .25em;
 }

@@ -5,15 +5,15 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %} 
 {% block content %}
-<div style="display: flex; flex-direction: column;align-items: center;">
+<div class="content" style="display: flex; flex-direction: column;align-items: center;">
     <h2>REPORTES</h2>
     <div class="reports">
         {% if data %}
             {% for reporte in data %}
             <div class="container">
                     <p class="foot">{{reporte.hora}}</p>
-                    <h2>{{reporte.contenido}}</h2>
-                    <p class="foot">{{reporte.lugar.nombre}}</p>
+                    <h3>{{reporte.contenido}}</h3>
+                    <p class="foot"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{reporte.lugar.nombre}}</a></p>
                     <!-- {% if reporte.foto %}
                     <p>{{reporte.foto}}</p>
                     {% endif %} -->
