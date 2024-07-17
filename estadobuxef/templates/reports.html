@@ -21,7 +21,7 @@
             {% endfor %}
         {% endif %}
     </div>
-    <div>
+    <div style='text-align: center'>
         {% if data.has_previous %}
             <a class="button" href="?page=1">Primera</a>
             <a class="button" href="?page={{ data.previous_page_number }}">Anterior</a>
@@ -34,7 +34,7 @@
             <a class="button" href="?page={{ data.paginator.num_pages }}">Última</a>
         {% endif %}
     </div>
-    <div>
+    <div style='text-align: center; margin-top: 30px'>
         <a class="button" href="{% url 'home' %}">Volver</a>
     </div>
 </div>
