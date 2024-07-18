@@ -1,12 +1,34 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% block title %} Reportes {% endblock %} 
-{% block css%}
+{% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-{% endblock %} 
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        background-color: #A8C3FD;
+        border-radius: .25em;
+        padding: 25px;
+        margin: 15px;
+        align-items: center;
+    }
+</style>
+{% endblock %}
 {% block content %}
 <div class="content">
     <h2>REPORTES</h2>
+    <div>
+        {% if filtros %}
+            {% for r in filtros %}
+                {% if r == lugar_filtro %}
+                    <a class="button" href="?{% if data.has_other_pages %}page=1{% endif %}" style="background-color: #F2C6C2; color:black;">{{ r }}</a>
+                {% else %}
+                    <a class="button" href="?lugar={{ r }}{% if data.has_other_pages %}&page=1{% endif %}">{{ r }}</a>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
     <div class="reports">
         {% if data %}
             {% for reporte in data %}
@@ -21,20 +43,22 @@
             {% endfor %}
         {% endif %}
     </div>
-    <div>
+    <div style='text-align: center'>
         {% if data.has_previous %}
             <a class="button" href="?page=1">Primera</a>
             <a class="button" href="?page={{ data.previous_page_number }}">Anterior</a>
         {% endif %}
 
-        Pagina {{ data.number }} de {{ data.paginator.num_pages }}.
+        <div class="pagination-footer">
+            Página {{ data.number }} de {{ data.paginator.num_pages }}.
+        </div>
 
         {% if data.has_next %}
             <a class="button" href="?page={{ data.next_page_number }}">Siguiente</a>
             <a class="button" href="?page={{ data.paginator.num_pages }}">Última</a>
         {% endif %}
     </div>
-    <div>
+    <div style='text-align: center; margin-top: 30px'>
         <a class="button" href="{% url 'home' %}">Volver</a>
     </div>
 </div>
