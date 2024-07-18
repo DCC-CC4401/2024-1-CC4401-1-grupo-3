@@ -183,7 +183,7 @@ label {
     user-select: none;
 }
 
-img {
+.lugar-image {
     max-height: 120px;
     width: 100%;
     object-fit: cover;

@@ -17,27 +17,31 @@
         <h1 class="title" style="color: #040430; font-weight: lighter; font-size: 70px; margin-top: 0%; margin-bottom: 20%;">Bienvenido a Estado Buxef</h1>
     <div class="title-space">
     <div>
-        
+        <div class="container">
             <h2 class="reports-title" style="color: #040430">ÚLTIMOS REPORTES</h2>
-            <table class="table" >
-                <tr >
+            <table class="table">
+                <tr>
                     <th style="color: #040430">Lugar</th>
                     <th style="color: #040430">Suceso</th>
                     <th style="color: #040430">Hora</th>
                     <th style="color: #040430">Estado</th>
                     {% if user_is_funcionario %}
-                    <th></th>
+                        <th></th>
                     {% endif %}
                 </tr>
                 {% if reportes %}
                     {% for reporte in reportes %}
                         <tr>
-                            <td class="reporte-lugar" style="color: #040430"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></td>
+                            <td class="reporte-lugar" style="color: #040430"><a
+                                    href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a>
+                            </td>
                             <td style="color: #040430">{{ reporte.contenido }}</td>
                             <td style="color: #040430">{{ reporte.hora|date:"H:i" }}</td>
-                            <td class="reporte-estado" style="color: #040430">{{ reporte.estado }}</td>
+                            <td class="reporte-estado" style="color: #040430">{% if reporte.estado == 'P' %}Pendiente{% else %}Resuelto{% endif %}</td>
                             {% if user_is_funcionario %}
-                                <td class="edit-btn" style="color: #040430"><span onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined" style="cursor:pointer">edit</span></td>
+                                <td class="edit-btn" style="color: #040430"><span
+                                        onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined"
+                                        style="cursor:pointer">edit</span></td>
                             {% endif %}
                         </tr>
                     {% endfor %}
@@ -47,7 +51,7 @@
         </div>
 
         <div>
-            <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte </button>
+            <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte</button>
             <div id="add-report" class="add-report">
                 {% if user.is_authenticated %}
                     <form method="post">
@@ -76,21 +80,29 @@
                 {% endif %}
             </div>
         </div>
-    <div  style="margin: 21px 0; text-align: center">
-    <h2 style="color: #040430">LUGARES</h2>
-    <div class="categories-container">
-        {% for categoria in categorias %}
-            <div class="category">
-                <img src="{% static 'images/categories' %}/{{ categoria.foto }}">
-                <h2 style="color: #040430">{{ categoria.nombre }}</h2>
-                    <ul>
-                        {% for lugar in lugares.all %}
-                            {% if lugar.categoria == categoria %}
-                            <li style="color: #040430"><a href="{% url 'lugar' %}?nombre={{  lugar.nombre }}">{{ lugar.nombre }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
+        <div style="margin: 21px 0; text-align: center">
+            <h2 style="color: #040430">LUGARES</h2>
+            <div class="categories-container">
+                {% for categoria in categorias %}
+                    <div class="category" onclick="toggleCategoryList(this)">
+                        <img class="lugar-image" src="{% static 'images/categories' %}/{{ categoria.foto }}">
+                        <div class="category-subcontainer">
+                            <h2 style="color: #040430">{{ categoria.nombre }}</h2>
+                            <span class="material-symbols-outlined">arrow_drop_down</span>
+                        </div>
+                        <ul style="display: none; background-color: var(--table);">
+                            {% for lugar in lugares.all %}
+                                {% if lugar.categoria == categoria %}
+                                    <li style="color: #040430"><a
+                                            href="{% url 'lugar' %}?nombre={{ lugar.nombre }}">{{ lugar.nombre }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
             </div>
+        </div>
         {% endfor %}
     </div>
     <div class="container">

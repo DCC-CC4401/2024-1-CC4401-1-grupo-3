@@ -21,10 +21,10 @@
 <div class="navbar">
     <a href="{% url 'home' %}" style="font-size: x-large;">ESTADOBUXEF</a>
     <a href="{% url 'reports' %}" style="margin-right: auto;">Reportes</a>
-    <div>
+    <div style="display:flex; align-items: center; justify-content: start">
         {% if user.is_authenticated %}
-            <a href="{% url 'user-profile' %}"> {{ user.username }} </a>
-            <a href="{% url 'logout' %}">Logout</a>
+            <a style="display:flex; align-items: center" href="{% url 'user-profile' %}"> <img alt="profile picture" src="{{ user.estudiante.foto.url }}" class="image is-48x48 profile-picture is-rounded"/> {{ user.username }} </a>
+            <a style="margin-left: auto" href="{% url 'logout' %}">Logout</a>
         {% else %}
             <a href="{% url 'log-reg' %}">Login</a>
         {% endif %}
