@@ -6,10 +6,12 @@
 
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lugar.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div>
+    <div style="display: flex; align-items: start; justify-content: space-evenly">
+    <div class="lugar-container">
         {% if lugar %}
             <h2>{{ lugar.nombre }}
                 <span onclick="likePlace(this, {{ lugar.id }})" class="material-symbols-outlined"
@@ -30,6 +32,8 @@
             {% endfor %}
         {% endif %}
     </div>
+    <div style="max-width: 45%">
+    <img src="{{ lugar.foto.url }}" alt="Foto del lugar" class="image lugar-foto">
     {% if reportes %}
         <div class="centered-container">
             <h2 class="reports-title">REPORTES</h2>
@@ -47,7 +51,7 @@
                         <tr>
                             <td>{{ reporte.contenido }}</td>
                             <td>{{ reporte.hora|date:"H:i" }}</td>
-                            <td class="reporte-estado">{{ reporte.estado }}</td>
+                            <td class="reporte-estado">{% if reporte.estado == 'P' %}Pendiente{% else %}Resuelto{% endif %}</td>
                             {% if user.funcionario %}
                                 <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})"
                                                         class="material-symbols-outlined"
@@ -59,6 +63,8 @@
             </table>
         </div>
     {% endif %}
+    </div>
+    </div>
 {% endblock %}
 
 {% block javascript %}

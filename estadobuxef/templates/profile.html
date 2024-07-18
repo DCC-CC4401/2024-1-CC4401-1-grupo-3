@@ -25,7 +25,7 @@
                         <td class="reporte-lugar"><a href="{% url 'lugar' %}?nombre={{ reporte.lugar.nombre }}">{{ reporte.lugar.nombre }}</a></td>
                         <td>{{ reporte.contenido }}</td>
                         <td>{{ reporte.hora|date:"H:i" }}</td>
-                        <td class="reporte-estado">{{ reporte.estado }}</td>
+                        <td class="reporte-estado">{% if reporte.estado == 'P' %}Pendiente{% else %}Resuelto{% endif %}</td>
                         <td class="edit-btn"><span class="material-symbols-outlined" style="display: none;"></span></td>
                     </tr>
                 {% endfor %}
