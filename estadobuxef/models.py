@@ -24,7 +24,7 @@ class UsuarioRegistrado(User):
 
 class Estudiante(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, )
-    favoritos = models.ManyToManyField('Lugar', blank=True, null=True)
+    favoritos = models.ManyToManyField('Lugar', blank=True)
 
 
 class FuncionarioManager(BaseUserManager):
