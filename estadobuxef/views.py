@@ -166,13 +166,24 @@ def reports(request):
     ** Description **
     If the request method is GET, the reports page is rendered with the list
     of the reports in the database, the reports are going to be shown in sets of 
-    5 with paginated lists.
+    5 with paginated lists and can be filtered with buttons.
     """
     if request.method == "GET":
-        paginator = Paginator(Reporte.objects.all(), 5)
+        reportes = set()
+        a = Reporte.objects.all()
+        for i in a:
+            reportes.add(i.lugar.categoria.nombre)
+        reportes = sorted(list(reportes))
+        lugar_filtro = request.GET.get('lugar')
+        if lugar_filtro:
+            report_list = Reporte.objects.filter(lugar__categoria__nombre=lugar_filtro)
+        else:
+            report_list = Reporte.objects.all()
+        
+        paginator = Paginator(report_list, 5)
         page_number = request.GET.get('page')
         report_page = paginator.get_page(page_number)
-        return render(request, "reports.html", {'data': report_page})
+        return render(request, "reports.html", {'data': report_page, 'filtros': reportes, 'lugar_filtro': lugar_filtro})
 
 
 def lugar(request):
