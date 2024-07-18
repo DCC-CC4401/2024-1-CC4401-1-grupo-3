@@ -157,7 +157,6 @@ label {
     background-color: #C6AFBF;
 }
 
-
 .show {
     display: flex;
     justify-content: center;
@@ -188,4 +187,18 @@ img {
     max-height: 120px;
     width: 100%;
     object-fit: cover;
+}
+
+.barra-inferior {
+    position: absolute;
+    bottom: 120;
+    margin-top: 15%;
+    left: 0;
+    background-color: var(--form-bg);
+    width: 100%;
+    text-align: center;
+}
+
+.title-space {
+    margin-top: 13%;
 }
