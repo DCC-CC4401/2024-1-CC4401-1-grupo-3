@@ -40,6 +40,10 @@
     height: fit-content;
 }
 
+.category a:hover {
+    color: var(--dark-pink);
+  }
+
 .category h2 {
     background-color: var(--over-table);
     color: var(--text-color);
@@ -69,4 +73,8 @@
 .category p {
     color: var(--over-table);
     font-style: italic;
+}
+
+img {
+    border-radius: inherit;
 }

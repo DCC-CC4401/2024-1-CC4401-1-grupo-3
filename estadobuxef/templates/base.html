@@ -17,10 +17,10 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
-<body style="background-color: #FFFFFF;">
-<div class="navbar" style="background-color: #F2C6C2;">
-    <a href="{% url 'home' %}" style="font-size: x-large; color: #040430">ESTADOBUXEF</a>
-    <a href="{% url 'categoria' %}" style="margin-right: auto; color: #040430">Lugares por categoria</a>
+<body>
+<div class="navbar">
+    <a href="{% url 'home' %}" style="font-size: x-large;">ESTADOBUXEF</a>
+    <a href="{% url 'reports' %}" style="margin-right: auto;">Reportes</a>
     <div>
         {% if user.is_authenticated %}
             <a href="{% url 'user-profile' %}"> {{ user.username }} </a>
