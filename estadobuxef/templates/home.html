@@ -40,11 +40,11 @@
                     {% endfor %}
                 {% endif %}
             </table>
-            <a class="not-btn" href="{% url 'reports' %}" style="color: #040430">Ver más</a>
+            <a class="not-btn" href="{% url 'reports' %}" style="margin-top: 1em;">Ver más</a>
         </div>
 
         <div>
-            <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte</button>
+            <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte </button>
             <div id="add-report" class="add-report">
                 {% if user.is_authenticated %}
                     <form method="post">
@@ -74,7 +74,7 @@
             </div>
         </div>
     <div  style="margin: 21px 0; text-align: center">
-    <h2 class="reports-title" style="color: #040430">LUGARES</h2>
+    <h2 style="color: #040430">LUGARES</h2>
     <div class="categories-container">
         {% for categoria in categorias %}
             <div class="category">
