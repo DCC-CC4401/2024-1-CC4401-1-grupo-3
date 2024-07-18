@@ -189,3 +189,7 @@ img {
     width: 100%;
     object-fit: cover;
 }
+
+.subcontent h2 {
+    padding: 10px; 
+}
