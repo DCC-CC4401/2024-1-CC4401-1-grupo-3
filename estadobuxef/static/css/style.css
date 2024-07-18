@@ -121,3 +121,14 @@ a {
   background-color: var(--navbar-bg);
   border-radius: .25em;
 }
+
+.pagination-footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -1px 5px rgba(0,0,0,0.2);
+}
