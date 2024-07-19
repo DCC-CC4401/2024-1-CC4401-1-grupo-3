@@ -13,12 +13,14 @@
 {% endblock %}
 
 {% block content %}
-    <div class="title-space">
-        <h1 class="title" style="color: #040430; font-weight: lighter; font-size: 70px; margin-top: 0%; margin-bottom: 20%;">Bienvenido a Estado Buxef</h1>
-    <div class="title-space">
-    <div>
-        <div class="container">
-            <h2 class="reports-title" style="color: #040430">ÚLTIMOS REPORTES</h2>
+    <div class="container" style="background-color: #fff">
+        <div class="title-space">
+            <h1 class="title"
+                style="color: #040430; font-weight: lighter; font-size: 70px; margin-top: 0%; margin-bottom: 20%;">
+                Bienvenido a Estado Buxef</h1>
+        </div>
+        <div class="container" style="width: 100%">
+            <h2 class="reports-title" style="color: #040430">ÚLTIMOS REPORTES DE HOY</h2>
             <table class="table">
                 <tr>
                     <th style="color: #040430">Lugar</th>
@@ -37,7 +39,8 @@
                             </td>
                             <td style="color: #040430">{{ reporte.contenido }}</td>
                             <td style="color: #040430">{{ reporte.hora|date:"H:i" }}</td>
-                            <td class="reporte-estado" style="color: #040430">{% if reporte.estado == 'P' %}Pendiente{% else %}Resuelto{% endif %}</td>
+                            <td class="reporte-estado" style="color: #040430">{% if reporte.estado == 'P' %}
+                                Pendiente{% else %}Resuelto{% endif %}</td>
                             {% if user_is_funcionario %}
                                 <td class="edit-btn" style="color: #040430"><span
                                         onclick="changeState(this, {{ reporte.id }})" class="material-symbols-outlined"
@@ -50,11 +53,11 @@
             <a class="not-btn" href="{% url 'reports' %}" style="margin-top: 1em;">Ver más</a>
         </div>
 
-        <div>
+        <div class="container" style="background-color: #fff; width: 100%">
             <button onclick="myFunction()" class="dropdown" id="ingresar-btn">Ingresar Reporte</button>
-            <div id="add-report" class="add-report">
+            <div id="add-report" class="add-report" style="width: 100%">
                 {% if user.is_authenticated %}
-                    <form method="post">
+                    <form method="post" style="width: 100%">
                         {% csrf_token %}
                         <div id="lugar">
                             <label for="lugar">Lugar: </label>
@@ -80,7 +83,7 @@
                 {% endif %}
             </div>
         </div>
-        <div style="margin: 21px 0; text-align: center">
+        <div class="container" style="width: 100%;margin: 21px 0; text-align: center; background-color: #fff">
             <h2 style="color: #040430">LUGARES</h2>
             <div class="categories-container">
                 {% for categoria in categorias %}
@@ -103,30 +106,45 @@
                 {% endfor %}
             </div>
         </div>
-        {% endfor %}
-    </div>
-    <div class="container">
+        {#        {% endfor %}#}
+        <div class="container" style="width: 49%">
         <div class="quienes-somos">
             <h2 style="color: #040430">¿Quiénes somos?</h2>
-            <p style="color: #040430; text-align: center;">Somos un grupo de estudiantes de la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile, que busca mejorar la <strong>experiencia universitaria</strong> a través de un sistema de <strong>reportes</strong> y sus <strong>estados</strong>. Nuestros integrantes han creado equipos de developers especializados desde diseño y modelamiento, hasta testing y backend, y hemos conseguido desarrollar esta plataforma en pos del buen convivir de la comunidad buchefiana. 
-                A través de estos reportes podrás conocer más de tu facultad, como buenos lugares para almorzar, estudiar o simplemente relajarte. <strong>¡Únete a nuestra comunidad y ayúdanos a mejorar la vida universitaria!</strong></p>
+{#            <div >#}
+            <p style="color: #040430; text-align: justify;">Somos un grupo de estudiantes de la Facultad de Ciencias
+                Físicas y Matemáticas de la Universidad de Chile, que busca mejorar la <strong>experiencia
+                    universitaria</strong> a través de un sistema de <strong>reportes</strong> y sus
+                <strong>estados</strong>. Nuestros integrantes han creado equipos de developers especializados desde
+                diseño y modelamiento, hasta testing y backend, y hemos conseguido desarrollar esta plataforma en pos
+                del buen convivir de la comunidad buchefiana.
+                A través de estos reportes podrás conocer más de tu facultad, como buenos lugares para almorzar,
+                estudiar o simplemente relajarte. <strong>¡Únete a nuestra comunidad y ayúdanos a mejorar la vida
+                    universitaria!</strong></p>
+{#                </div>#}
         </div>
     </div>
     </div>
-    <div class="barra-inferior" style="
-    width: 100%;
-    text-align-last: center;
-    height: 200px;
-    position: absolute;
-    bottom: 120;
-    margin-top: 15%;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;">
-        <h3> ¡Contáctanos! :) </h3>
+
+
+    <div class="barra-inferior">
+{#    <div class="barra-inferior" style="#}
+{#    width: 100%;#}
+{#    text-align-last: center;#}
+{#    height: 200px;#}
+{#    position: absolute;#}
+{#    bottom: 120px;#}
+{#    margin-top: 15%;#}
+{#    left: 0;#}
+{#    display: flex;#}
+{#    align-items: center;#}
+{#    justify-content: center;#}
+{#    text-align: center;"#}
+
+
     </div>
+{#    <div style="background-color: var(--form-bg); width: 100%; text-align: center">#}
+{#        <h3 style="margin-top:13px"> ¡Contáctanos! :) </h3>#}
+{#    </div>#}
     <script>
         function myFunction() {
             document.getElementById("add-report").classList.toggle("show");

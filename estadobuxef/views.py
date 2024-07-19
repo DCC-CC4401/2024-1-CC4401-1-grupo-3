@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import LoginForm, RegisterForm, NuevoReporteForm
 from .models import Lugar, Reporte, Categoria, Estudiante
 
+import datetime
 
 def update_report(request):
     if request.method == "POST":
@@ -56,6 +57,7 @@ def home(request):
     elif request.method == "GET":
         reportes = Reporte.objects.all()
         reportes = reportes.order_by('-hora')
+        reportes = reportes.filter(hora__gte=(datetime.date.today()))
         permisos = request.user.user_permissions.all()
         for permiso in permisos:
             print(f'{permiso.codename}')

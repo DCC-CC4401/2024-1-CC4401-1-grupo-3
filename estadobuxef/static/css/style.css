@@ -6,6 +6,12 @@
   --darker-blue: #173983;
   --container-bg: #d5def3;
   --dark-pink: #d32398;
+    --table-hover-bg: #C6AFBF;
+    --button-bg: #040430;
+    --form-bg: #A8C3FD;
+    --input-text: #f0eded;
+    --button: #112e6b;
+    min-height: 100vh;
 }
 
 body {
@@ -13,6 +19,9 @@ body {
   background-color: var(--background-color);
   font: 1rem 'Inter', sans-serif;
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* NAV BAR STUFF */
@@ -28,7 +37,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  max-height: 3.5em;
+  height: 4em;
   padding: 0 1em;
   box-sizing: border-box;
   z-index: 1000;
@@ -88,6 +97,8 @@ a {
   padding: 25px;
   margin: 15px;
   align-items: center;
+  max-width: 70%;
+  flex-wrap: nowrap;
 }
 
 .container a:hover {
@@ -135,7 +146,7 @@ a {
 
 .pagination-footer {
   width: 100%;
-  position: fixed;
+  /*position: fixed;*/
   bottom: 0;
   left: 0;
   background-color: #fff;

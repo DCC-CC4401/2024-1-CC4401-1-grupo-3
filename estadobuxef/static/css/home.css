@@ -6,6 +6,7 @@
     --form-bg: #A8C3FD;
     --input-text: #f0eded;
     --navbar-bg: #F2C6C2;
+    --button: #112e6b;
 }
 
 body {
@@ -13,25 +14,8 @@ body {
     background-color: var(--background-color);
     font: 1rem 'Fira Sans', sans-serif;
     color: var(--text-color);
-    padding: 20px;
+    /*padding: 20px;*/
     padding-top: 50px;
-}
-
-.navbar {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--navbar-bg);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4em;
-    padding: 0 1em;
-    box-sizing: border-box;
-    z-index: 1000;
-    margin-bottom: 1em;
 }
 
 h2 {
@@ -109,7 +93,7 @@ select, textarea, input[type="text"] {
     border-radius: 4px;
     border: 3px solid var(--table-hover-bg);
     background-color: var(--table-hover-bg);
-    color: var(--input-text);
+    /*color: var(--input-text);*/
 }
 
 label {
@@ -190,9 +174,9 @@ label {
 }
 
 .barra-inferior {
-    position: absolute;
-    bottom: 120;
-    margin-top: 15%;
+    position: fixed;
+    bottom: 0;
+    /*margin-top: 15%;*/
     left: 0;
     background-color: var(--form-bg);
     width: 100%;
@@ -201,4 +185,14 @@ label {
 
 .title-space {
     margin-top: 13%;
+}
+
+.quienes-somos {
+    /*margin-top: 20px;*/
+    margin-right: auto;
+    margin-left: auto;
+/*box-sizing: border-box;*/
+    display: flex;
+    flex-wrap: wrap;
+    max-width: fit-content;
 }
