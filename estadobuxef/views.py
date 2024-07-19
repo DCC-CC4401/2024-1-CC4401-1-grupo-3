@@ -150,9 +150,17 @@ def profile(request):
     user = request.user
     reportes = Reporte.objects.filter(usuario=user).order_by('-hora')
     lugares = []
-    if user.estudiante:
-        for lugar in user.estudiante.favoritos.all():
-            lugares.append(lugar)
+    try:
+        if user.estudiante:
+            for lugar in user.estudiante.favoritos.all():
+                lugares.append(lugar)
+    except:
+        try:
+            if user.funcionario:
+                for lugar in user.funcionario.favoritos.all():
+                    lugares.append(lugar)
+        except:
+            raise
     return render(request, 'profile.html', {'user': user, 'reportes': reportes, "lugares": lugares})
 
 
