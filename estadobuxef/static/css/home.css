@@ -159,7 +159,7 @@ label {
   }
 
 .edit-btn:hover {
-    cursor: none;
+    cursor: pointer;
 }
 
 .edit-btn {
