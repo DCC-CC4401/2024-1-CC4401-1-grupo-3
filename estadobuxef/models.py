@@ -68,6 +68,9 @@ class Funcionario(models.Model):
         User,
         on_delete=models.CASCADE,
     )
+    foto = models.ImageField(upload_to='uploads/funcionarios/', blank=True, null=False, default='static/images/default_funcionarios.png')
+    favoritos = models.ManyToManyField('Lugar', blank=True)
+
 
 """
 ** Models **

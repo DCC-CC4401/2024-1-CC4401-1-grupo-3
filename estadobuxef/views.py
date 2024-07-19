@@ -14,6 +14,7 @@ import datetime
 
 def update_report(request):
     if request.method == "POST":
+        # print(request.body)
         if len(json.loads(request.body)) == 3:
             request_data = json.loads(request.body)
             reporte = Reporte.objects.get(pk=request_data['reporteId'])
@@ -49,8 +50,7 @@ def home(request):
             cleaned_data = form_reporte.cleaned_data
             # Reporte.objects.create(**cleaned_data)
             rep = form_reporte.save(commit=False)
-            estudiante = Estudiante.objects.get(id=request.user.id)
-            rep.usuario = estudiante
+            rep.usuario = request.user
             rep.save()
             rep = NuevoReporteForm()
         return HttpResponseRedirect('/')
@@ -203,11 +203,24 @@ def like_place(request):
         lugar = Lugar.objects.get(id=request_data['lugar'])
         user = request.user
         like = request_data['likes']
-        if like:
-            user.estudiante.favoritos.remove(lugar)
-        elif not like and lugar not in user.estudiante.favoritos.all():
-            user.estudiante.favoritos.add(lugar)
-        user.save()
+        try:
+            # user.estudiante
+            if like:
+                user.estudiante.favoritos.remove(lugar)
+            elif not like and lugar not in user.estudiante.favoritos.all():
+                user.estudiante.favoritos.add(lugar)
+            user.save()
+        except:
+            print('No es estudiante')
+            try:
+                if like:
+                    user.funcionario.favoritos.remove(lugar)
+                elif not like and lugar not in user.funcionario.favoritos.all():
+                    user.funcionario.favoritos.add(lugar)
+                user.save()
+            except:
+                print('No es funcionario')
+                raise
     return HttpResponse('OK')
 
 

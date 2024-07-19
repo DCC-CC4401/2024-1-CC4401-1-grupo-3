@@ -3,7 +3,7 @@
     "model": "estadobuxef.Categoria",
     "pk": 1,
     "fields": {
-      "nombre": "Sala",
+      "nombre": "Salas",
       "foto": "IMG_20240711_152845.jpg"
     }
   },
@@ -11,7 +11,7 @@
     "model": "estadobuxef.Categoria",
     "pk": 2,
     "fields": {
-      "nombre": "Baño",
+      "nombre": "Baños",
       "foto":"IMG_20240711_151411.jpg"
     }
   },
@@ -19,7 +19,7 @@
     "model": "estadobuxef.Categoria",
     "pk": 3,
     "fields": {
-      "nombre": "Comedor",
+      "nombre": "Comedores",
       "foto": "IMG_20240711_153138.jpg"
     }
   },
@@ -68,7 +68,7 @@
         "Internet": "Puede a veces la calidad de la señal no ser la mejor la estar en el -1 y además por lo grande de la sala y posibles interferencias",
         "Baños": "Relativamente cerca, a unos 2-3 minutos caminando"
       },
-      "foto": ""
+      "foto": "static/images/places/salaB02.png"
     }
   },
   {
@@ -222,11 +222,37 @@
       "user_permissions": []
       }
     },
+    {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$5KtZ95HZligTe5eoRJM9RI$f9+9STRCcYFpbOv1yLdOPoXpAvm3QMccb9wxDzcbpO4=",
+      "last_login": "2024-07-08T20:51:54.346Z",
+      "is_superuser": false,
+      "username": "robinson",
+      "first_name": "Robinson",
+      "last_name": "Antivil",
+      "email": "robinson@dcc.uchile.cl",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-08T20:51:53.710Z",
+      "groups": [],
+      "user_permissions": []
+      }
+    },
   {
     "model": "estadobuxef.funcionario",
     "pk": 1,
     "fields": {
       "user_id": 2
+    }
+  },
+    {
+    "model": "estadobuxef.funcionario",
+    "pk": 2,
+    "fields": {
+      "user_id": 3,
+      "foto": "static/images/funcionarios/robinson_antivil.png"
     }
   },
   {

@@ -11,62 +11,74 @@
 
 {% block content %}
     <div style="display: flex; align-items: start; justify-content: space-evenly">
-    <div class="lugar-container">
-        {% if lugar %}
-            <h2>{{ lugar.nombre }}
-                <span onclick="likePlace(this, {{ lugar.id }})" class="material-symbols-outlined"
-                      style="cursor:pointer; vertical-align: middle;
-                              {% if lugar in user.estudiante.favoritos.all %}
-                                  font-variation-settings:
-                                  'FILL' 1,
-                                  'wght' 400,
-                                  'GRAD' 0,
-                                  'opsz' 24;
-                                  content: 'liked'
-                              {% endif %}
-                              ">favorite</span>
-            </h2>
-            <h2>Descripción: </h2>
-            {% for caract, value in lugar.data.items %}
-                <p> - {{ caract }}: {{ value }}</p>
-            {% endfor %}
-        {% endif %}
-    </div>
-    <div style="max-width: 45%">
-    <img src="{{ lugar.foto.url }}" alt="Foto del lugar" class="image lugar-foto">
-    {% if reportes %}
-        <div class="centered-container">
-            <h2 class="reports-title">REPORTES</h2>
-            <table class="table">
-                <tr>
-                    <th>Suceso</th>
-                    <th>Hora</th>
-                    <th>Estado</th>
-                    {% if user.funcionario %}
-                        <th></th>
-                    {% endif %}
-                </tr>
-                {% if reportes %}
-                    {% for reporte in reportes %}
+        <div class="lugar-container">
+            {% if lugar %}
+                <h2>{{ lugar.nombre }}
+                    <span onclick="likePlace(this, {{ lugar.id }})" class="material-symbols-outlined"
+                          style="cursor:pointer; vertical-align: middle;
+                                  {% if user.estudiante %}
+                                      {% if lugar in user.estudiante.favoritos.all %}
+                                          font-variation-settings:
+                                          'FILL' 1,
+                                          'wght' 400,
+                                          'GRAD' 0,
+                                          'opsz' 24;
+                                          content: 'liked'
+                                      {% endif %}
+                                  {% elif user.funcionario %}
+                                      {% if lugar in user.funcionario.favoritos.all %}
+                                          font-variation-settings:
+                                          'FILL' 1,
+                                          'wght' 400,
+                                          'GRAD' 0,
+                                          'opsz' 24;
+                                          content: 'liked'
+                                      {% endif %}
+                                  {% endif %}
+                                  ">favorite</span>
+                </h2>
+                <h2>Descripción: </h2>
+                {% for caract, value in lugar.data.items %}
+                    <p> - {{ caract }}: {{ value }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div style="max-width: 45%">
+            <img src="{{ lugar.foto.url }}" alt="Foto del lugar" class="image lugar-foto">
+            {% if reportes %}
+                <div class="centered-container">
+                    <h2 class="reports-title">REPORTES</h2>
+                    <table class="table">
                         <tr>
-                            <td>{{ reporte.contenido }}</td>
-                            <td>{{ reporte.hora|date:"H:i" }}</td>
-                            <td class="reporte-estado">{% if reporte.estado == 'P' %}Pendiente{% else %}Resuelto{% endif %}</td>
+                            <th>Suceso</th>
+                            <th>Hora</th>
+                            <th>Estado</th>
                             {% if user.funcionario %}
-                                <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})"
-                                                        class="material-symbols-outlined"
-                                                        style="cursor:pointer">edit</span></td>
+                                <th></th>
                             {% endif %}
                         </tr>
-                    {% endfor %}
-                {% endif %}
-            </table>
+                        {% if reportes %}
+                            {% for reporte in reportes %}
+                                <tr>
+                                    <td>{{ reporte.contenido }}</td>
+                                    <td>{{ reporte.hora|date:"H:i" }}</td>
+                                    <td class="reporte-estado">{% if reporte.estado == 'P' %}Pendiente{% else %}
+                                        Resuelto{% endif %}</td>
+                                    {% if user.funcionario %}
+                                        <td class="edit-btn"><span onclick="changeState(this, {{ reporte.id }})"
+                                                                   class="material-symbols-outlined"
+                                                                   style="cursor:pointer">edit</span></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+            {% endif %}
         </div>
-    {% endif %}
-    </div>
     </div>
 {% endblock %}
 
 {% block javascript %}
-<script src="{% static 'js/lugar.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/lugar.js' %}" type="text/javascript"></script>
 {% endblock %}
