@@ -189,7 +189,7 @@ def reports(request):
             report_list = Reporte.objects.filter(lugar__categoria__nombre=lugar_filtro)
         else:
             report_list = Reporte.objects.all()
-        
+        print(report_list)
         paginator = Paginator(report_list, 5)
         page_number = request.GET.get('page')
         report_page = paginator.get_page(page_number)

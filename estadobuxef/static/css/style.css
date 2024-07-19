@@ -148,11 +148,16 @@ a {
 
 .pagination-footer {
   width: 100%;
-  /*position: fixed;*/
+  /*position: fixed ;*/
   bottom: 0;
   left: 0;
   background-color: #fff;
   text-align: center;
   padding: 10px 0;
   box-shadow: 0 -1px 5px rgba(0,0,0,0.2);
+}
+
+select.reporte-estado {
+  margin-bottom: 0;
+  font: 1rem 'Inter', sans-serif
 }

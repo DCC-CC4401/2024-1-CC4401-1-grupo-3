@@ -34,6 +34,7 @@ const changeState = (element, reporte) => {
 
     // create new selectElement to replace with reporte status
     const selector = document.createElement("select")
+    selector.classList.add("reporte-estado")
 
     // create optionElement for Pendiente
     const pendiente_option = document.createElement("option")

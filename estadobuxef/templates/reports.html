@@ -22,7 +22,8 @@
         {% if filtros %}
             {% for r in filtros %}
                 {% if r == lugar_filtro %}
-                    <a class="button" href="?{% if data.has_other_pages %}page=1{% endif %}" style="background-color: #F2C6C2; color:black;">{{ r }}</a>
+                    <a class="button" href="?lugar={{ r }}{% if data.has_other_pages %}&page={{ data.number }}{% endif %}"
+                     style="background-color: #F2C6C2; color:black;">{{ r }}</a>
                 {% else %}
                     <a class="button" href="?lugar={{ r }}{% if data.has_other_pages %}&page=1{% endif %}">{{ r }}</a>
                 {% endif %}
@@ -45,8 +46,13 @@
     </div>
     <div style='text-align: center'>
         {% if data.has_previous %}
-            <a class="button" href="?page=1">Primera</a>
-            <a class="button" href="?page={{ data.previous_page_number }}">Anterior</a>
+            {% if lugar_filtro %}
+                <a class="button" href="?lugar={{ lugar_filtro }}&page=1">Primera</a>
+                <a class="button" href="?lugar={{ lugar_filtro }}&page={{ data.previous_page_number }}">Anterior</a>
+            {% else %}
+                <a class="button" href="?page=1">Primera</a>
+                <a class="button" href="?page={{ data.previous_page_number }}">Anterior</a>
+            {% endif %}
         {% endif %}
 
         <div class="pagination-footer">
@@ -54,8 +60,13 @@
         </div>
 
         {% if data.has_next %}
-            <a class="button" href="?page={{ data.next_page_number }}">Siguiente</a>
-            <a class="button" href="?page={{ data.paginator.num_pages }}">Última</a>
+            {% if lugar_filtro %}
+                <a class="button" href="?lugar={{ lugar_filtro }}&page={{ data.next_page_number }}">Siguiente</a>
+                <a class="button" href="?lugar={{ lugar_filtro }}&page={{ data.paginator.num_pages }}">Última</a>
+            {% else %}
+                <a class="button" href="?page={{ data.next_page_number }}">Siguiente</a>
+                <a class="button" href="?page={{ data.paginator.num_pages }}">Última</a>
+            {% endif %}
         {% endif %}
     </div>
     <div style='text-align: center; margin-top: 30px'>
@@ -63,4 +74,4 @@
     </div>
 </div>
 
-{% endblock %} 
+{% endblock %}
