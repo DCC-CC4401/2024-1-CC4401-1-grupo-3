@@ -62,7 +62,7 @@ form.active {
 
 input[type="submit"] {
     background-color: var(--boton);
-    color: var(--login);
+    /*color: var(--login);*/
     border: none;
     padding: 10px;
     border-radius: 5px;

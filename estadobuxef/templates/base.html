@@ -17,14 +17,14 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
-<body style="background-color: #FFFFFF;">
-<div class="navbar" style="background-color: #F2C6C2;">
-    <a href="{% url 'home' %}" style="font-size: x-large; color: #040430">ESTADOBUXEF</a>
-    <a href="{% url 'categoria' %}" style="margin-right: auto; color: #040430">Lugares por categoria</a>
-    <div>
+<body>
+<div class="navbar">
+    <a href="{% url 'home' %}" style="font-size: x-large;">ESTADOBUXEF</a>
+    <a href="{% url 'reports' %}" style="margin-right: auto;">Reportes</a>
+    <div style="display:flex; align-items: center; justify-content: start">
         {% if user.is_authenticated %}
-            <a href="{% url 'user-profile' %}"> {{ user.username }} </a>
-            <a href="{% url 'logout' %}">Logout</a>
+            <a style="display:flex; align-items: center" href="{% url 'user-profile' %}"> <img alt="profile picture" src="{{ user.estudiante.foto.url }}" class="image is-48x48 profile-picture is-rounded"/> {{ user.username }} </a>
+            <a style="margin-left: auto" href="{% url 'logout' %}">Logout</a>
         {% else %}
             <a href="{% url 'log-reg' %}">Login</a>
         {% endif %}
@@ -33,6 +33,9 @@
 <div class="main-container">
     {% block content %}{% endblock %}
 </div>
+    <div style="background-color: var(--form-bg); width: 100%; text-align: center; padding: 20px; margin-top:auto;">
+        <h3 style="margin-top:13px"><a href="https://github.com/DCC-CC4401/2024-1-CC4401-1-grupo-3/">¡Contáctanos! :)</a> </h3>
+    </div>
     <script src="{% static 'js/utils.js' %}" type="text/javascript"></script>
 {% block javascript %}      
 {% endblock %}

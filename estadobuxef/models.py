@@ -23,8 +23,9 @@ class UsuarioRegistrado(User):
 
 
 class Estudiante(models.Model):
+    foto = models.ImageField(upload_to='uploads/estudiante/', blank=True, null=False, default='static/images/default.png')
     user = models.OneToOneField(User, on_delete=models.CASCADE, )
-    favoritos = models.ManyToManyField('Lugar', blank=True, null=True)
+    favoritos = models.ManyToManyField('Lugar', blank=True)
 
 
 class FuncionarioManager(BaseUserManager):

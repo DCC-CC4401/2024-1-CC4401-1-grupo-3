@@ -2,6 +2,16 @@
   --background-color: #ffffff;
   --text-color: #040430;
   --navbar-bg: #F2C6C2;
+  --blue: #375cad;
+  --darker-blue: #173983;
+  --container-bg: #d5def3;
+  --dark-pink: #d32398;
+    --table-hover-bg: #C6AFBF;
+    --button-bg: #040430;
+    --form-bg: #A8C3FD;
+    --input-text: #f0eded;
+    --button: #112e6b;
+    min-height: 100vh;
 }
 
 body {
@@ -9,6 +19,9 @@ body {
   background-color: var(--background-color);
   font: 1rem 'Inter', sans-serif;
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* NAV BAR STUFF */
@@ -31,18 +44,40 @@ body {
   /* margin-bottom: 1em; */
 }
 
+.navbar > * {
+  color: var(--text-color);
+}
+
 .navbar a {
   color: var(--text-color);
   position: relative;
   text-decoration: none;
   margin: 0 2em;
   padding: .25em;
-  font-weight: 900;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: large;
 }
 
-.navbar a:hover {
-  color: var(--navbar-bg);
+a {
+  color: var(--text-color);
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navbar a img {
+  position: relative;
+}
+
+.profile-picture {
+    max-height: 42px;
+    padding: 0;
+    margin: 0;
+  vertical-align: bottom;
+}
+
+.navbar a:hover, a:hover {
+  color: var(--blue);
 }
 
 .main-container {
@@ -50,18 +85,24 @@ body {
   flex-flow: wrap;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  /* padding: 15px; */
   margin-top: 4em;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  background-color: var(--background-color);
+  background-color: var(--container-bg);
   border-radius: .25em;
   padding: 25px;
   margin: 15px;
   align-items: center;
+  max-width: 70%;
+  flex-wrap: nowrap;
+}
+
+.container a:hover {
+  color: var(--dark-pink);
 }
 
 .container p {
@@ -69,7 +110,7 @@ body {
 }
 
 .container h3, .reports-title {
-  margin: 15px 0;
+  margin: 0;
 }
 
 .button {
@@ -105,7 +146,7 @@ body {
 
 .pagination-footer {
   width: 100%;
-  position: fixed;
+  /*position: fixed;*/
   bottom: 0;
   left: 0;
   background-color: #fff;
