@@ -148,6 +148,39 @@
       "estado": "R"
     }
   },
+  {
+    "model": "estadobuxef.reporte",
+    "pk": 4,
+    "fields": {
+      "usuario": 1,
+      "hora": "2024-07-12T12:16:45.683Z",
+      "contenido": "Hay dos sillas rotas, el resto muy cómodas",
+      "lugar": 2,
+      "foto": ""
+    }
+  },
+{
+    "model": "estadobuxef.reporte",
+    "pk": 5,
+    "fields": {
+      "usuario": 1,
+      "hora": "2024-07-19T10:51:45.683Z",
+      "contenido": "No se puede estudiar acá, está muy hediondo >:(",
+      "lugar": 3,
+      "foto": ""
+    }
+  },
+  {
+    "model": "estadobuxef.reporte",
+    "pk": 6,
+    "fields": {
+      "usuario": 1,
+      "hora": "2024-07-19T12:16:31.683Z",
+      "contenido": "Excelente lugar para estudiar, salvé todos mis ramos :)",
+      "lugar": 3,
+      "foto": ""
+    }
+  },
   {"model": "auth.permission", "pk": 37, "fields": {"name": "Can add user", "content_type": 10, "codename": "add_funcionario"}},
   {"model": "auth.permission", "pk": 38, "fields": {"name": "Can change user", "content_type": 10, "codename": "change_funcionario"}},
   {"model": "auth.permission", "pk": 39, "fields": {"name": "Can delete user", "content_type": 10, "codename": "delete_funcionario"}},
