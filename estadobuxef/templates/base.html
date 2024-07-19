@@ -23,7 +23,13 @@
     <a href="{% url 'reports' %}" style="margin-right: auto;">Reportes</a>
     <div style="display:flex; align-items: center; justify-content: start">
         {% if user.is_authenticated %}
-            <a style="display:flex; align-items: center" href="{% url 'user-profile' %}"> <img alt="profile picture" src="{{ user.estudiante.foto.url }}" class="image is-48x48 profile-picture is-rounded"/> {{ user.username }} </a>
+            <a style="display:flex; align-items: center" href="{% url 'user-profile' %}"> <img alt="profile picture" 
+                                                                                               {% if user.funcionario %}    
+                                                                                               src="{{ user.funcionario.foto.url }}" 
+                                                                                               {% elif user.estudiante %}
+                                                                                               src="{{ user.estudiante.foto.url }}" 
+                                                                                               {% endif %}
+                                                                                               class="image is-48x48 profile-picture is-rounded"/> {{ user.username }} </a>
             <a style="margin-left: auto" href="{% url 'logout' %}">Logout</a>
         {% else %}
             <a href="{% url 'log-reg' %}">Login</a>

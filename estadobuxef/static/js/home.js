@@ -22,10 +22,10 @@ const changeState = (element, reporte) => {
     resuelto_option.text = "Resuelto"
 
     // add options to selectElement
-    if (estado_anterior === "P") {
+    if (estado_anterior === "Pendiente") {
         selector.options.add(pendiente_option)
         selector.options.add(resuelto_option)
-    } else if (estado_anterior === "R") {
+    } else if (estado_anterior === "Resuelto") {
         selector.options.add(resuelto_option)
         selector.options.add(pendiente_option)
     }
@@ -37,8 +37,8 @@ const changeState = (element, reporte) => {
     selector.addEventListener("change", (ev) => {
         const data = {
             reporteId : reporte,
-            reporteOldStatus : estado_anterior,
-            reporteNewStatus : selector.value
+            reporteOldStatus : estado_anterior === 'Pendiente' || estado_anterior ==='P' ? 'P'  : 'R',
+            reporteNewStatus : selector.value === 'Pendiente' || selector.value === 'P' ? 'P' : 'R'
         }
         const csrftoken = getCookie('csrftoken');
         if (data.reporteOldStatus !== data.reporteNewStatus) {

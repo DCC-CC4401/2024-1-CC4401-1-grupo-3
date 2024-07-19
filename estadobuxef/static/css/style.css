@@ -72,7 +72,7 @@ a {
 .profile-picture {
     max-height: 42px;
     padding: 0;
-    margin: 0;
+    margin: 0 0.5em;
   vertical-align: bottom;
 }
 
